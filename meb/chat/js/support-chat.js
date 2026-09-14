@@ -91,11 +91,11 @@
     function buildRefundSuccessHtml(protocol, last4) {
         return '<div class="refund-success">' +
             '<i class="fa fa-check-circle"></i>' +
-            '<h3>✅ Refund processed successfully!</h3>' +
-            '<p>Your refund was processed and sent to the card issuer for the card ending in <strong>' + last4 + '</strong>.</p>' +
-            '<p style="margin-top:0.75rem"><strong>⏳ Billing statement timeframe:</strong> The amount will take <strong>30 to 60 days</strong> to appear on your credit card statement, per the issuer timeline.</p>' +
-            '<p style="margin-top:0.5rem;font-size:0.8rem">Keep your protocol number: <strong>#' + protocol + '</strong></p>' +
-            '<p style="margin-top:0.5rem;font-size:0.75rem;opacity:0.8">Your access has been closed per our refund policy.</p>' +
+            '<h3>✅ Reembolso processado com sucesso</h3>' +
+            '<p>Sua solicitação de estorno foi enviada à administradora do cartão de final <strong>' + last4 + '</strong>.</p>' +
+            '<p style="margin-top:0.75rem"><strong>💳 Extrato da fatura:</strong> pode levar de <strong>30 a 60 dias</strong> para constar no seu extrato, de acordo com as normas da sua emissora.</p>' +
+            '<p style="margin-top:0.5rem;font-size:0.8rem">Guarde seu número de protocolo: <strong>#' + protocol + '</strong></p>' +
+            '<p style="margin-top:0.5rem;font-size:0.75rem;opacity:0.8">Seu acesso foi encerrado conforme nossa política de reembolso.</p>' +
             '</div>';
     }
 
@@ -164,7 +164,7 @@
             showOptions([
                 { label: '📄 Generate another report', userText: 'Another report', action: flowReportMenu, primary: true },
                 { label: '📱 View apps', userText: 'View apps', action: function () { window.location.href = '../membros/app/applications/'; } },
-                { label: 'End chat', userText: 'Thanks', action: endChat }
+                { label: 'Encerrar chat', userText: 'Obrigado(a)', action: endChat }
             ]);
         } catch (e) {
             await botSay('There was an error generating the report. Try the Report Center on the Apps screen.');
@@ -195,7 +195,7 @@
             { label: '📄 Generate PDF Report', userText: 'I want to generate a report', action: flowReportMenu, primary: true },
             { label: '✅ I\'ve used the platform', userText: 'I\'ve used everything', action: flowCompleted },
             { label: '❓ I need help', userText: 'I need help', action: mainMenu },
-            { label: '💳 Refund', userText: 'I want a refund', action: flowRefundGate, danger: true }
+            { label: '💳 Reembolso', userText: 'Quero reembolso', action: flowRefundGate, danger: true }
         ]);
     }
 
@@ -203,10 +203,10 @@
         showOptions([
             { label: '📄 Generate PDF Report', userText: 'PDF report', action: flowReportMenu, primary: true },
             { label: '🔐 Access problem', userText: 'Access problem', action: flowAccess },
-            { label: '📍 Tracking', userText: 'Tracking', action: flowTracking },
+            { label: '📍 Rastreamento', userText: 'Rastreamento', action: flowTracking },
             { label: '🔑 Unlock code', userText: 'Code', action: flowCode },
             { label: '📱 Apps won\'t open', userText: 'Apps won\'t open', action: flowApps },
-            { label: '💳 Refund', userText: 'Refund', action: flowRefundGate, danger: true }
+            { label: '💳 Reembolso', userText: 'Reembolso', action: flowRefundGate, danger: true }
         ]);
     }
 
@@ -225,7 +225,7 @@
         await botSay('Let\'s fix this! Are you using the same email from your purchase?');
         showOptions([
             { label: 'Yes', userText: 'Yes, same email', action: accessVerify },
-            { label: 'I don\'t remember', userText: 'I don\'t remember', action: accessEmailHelp }
+            { label: 'Não me lembro', userText: 'Não me lembro', action: accessEmailHelp }
         ]);
     }
 
@@ -367,67 +367,36 @@
     function showRefundChecklist() {
         addMessage(
             '<div class="chat-checklist" id="refund-checklist">' +
-            '<label><input type="checkbox" id="ck1"> I logged in with my purchase email</label>' +
-            '<label><input type="checkbox" id="ck2"> I entered the number with the correct area code</label>' +
-            '<label><input type="checkbox" id="ck3"> I waited for tracking to complete (100%)</label>' +
-            '<label><input type="checkbox" id="ck4"> I accessed the cloned apps</label>' +
-            '<label><input type="checkbox" id="ck5"> I tried to generate the PDF report</label>' +
-            '<button type="button" id="checklist-submit" class="chat-option-btn primary" style="width:100%;margin-top:8px;border-radius:6px">Continue</button>' +
+            '<label><input type="checkbox" id="ck1"> Fiz login com o e-mail da compra</label>' +
+            '<label><input type="checkbox" id="ck2"> Digitei o número de telefone com o DDD correto</label>' +
+            '<label><input type="checkbox" id="ck3"> Aguardei o rastreamento atingir 100%</label>' +
+            '<label><input type="checkbox" id="ck4"> Abri os aplicativos no painel</label>' +
+            '<button type="button" id="checklist-submit" class="chat-option-btn primary" style="width:100%;margin-top:8px;border-radius:6px">Continuar</button>' +
             '</div>',
             'bot', true
         );
 
-        document.getElementById('checklist-submit').addEventListener('click', async function () {
-            var all = ['ck1', 'ck2', 'ck3', 'ck4', 'ck5'].every(function (id) {
-                return document.getElementById(id).checked;
-            });
-            var checklist = document.getElementById('refund-checklist');
-            if (checklist) checklist.closest('.chat-msg').remove();
-
-            if (!all) {
-                addUserMessage('I didn\'t complete all steps');
-                await botSay('I recommend completing everything and generating the PDF report — most customers change their mind when they see the results! 😊');
-                showOptions([
-                    { label: '📄 Generate Report', userText: 'Report', action: function () { exportReportChat('full'); }, primary: true },
-                    { label: 'Help me step by step', userText: 'Help', action: mainMenu },
-                    { label: 'Refund anyway', userText: 'Refund', action: function () {
-                        refundAttempts = 4;
-                        localStorage.setItem('areaspy_refund_attempts', '4');
-                        flowRefundWarning();
-                    }, danger: true }
-                ]);
-            } else {
-                addUserMessage('I completed all steps');
-                await botSay('Great! If you completed everything and saw the data, the service was delivered as agreed.');
-                await delay(400);
-                await botSay('Are you sure you want a refund? You will lose access permanently and all data will be deleted within 24h.');
-                showOptions([
-                    { label: '📄 Download Report first', userText: 'Download report', action: function () { exportReportChat('full'); }, primary: true },
-                    { label: 'Confirm refund', userText: 'I confirm refund', action: flowRefundWarning, danger: true }
-                ]);
-            }
-        });
+        document.getElementById('checklist-submit').addEventListener('click', onChecklistSubmit);
     }
 
     async function flowRefundWarning() {
         refundAttempts = Math.max(refundAttempts, 4);
         localStorage.setItem('areaspy_refund_attempts', String(refundAttempts));
 
-        await botSay('⚠️ Final refund notice:');
+        await botSay('⚠️ Aviso final sobre o reembolso:');
         addMessage(
             '<div class="alert-panel">' +
-            '<strong>Attention:</strong> When requesting a refund:<br>' +
-            '• Access canceled <strong>permanently</strong><br>' +
-            '• Data deleted from servers within 24h<br>' +
-            '• Statement credit: <strong>30 to 60 days</strong><br>' +
-            '• PDF reports will no longer be generated</div>',
+            '<strong>Atenção:</strong> ao confirmar o reembolso:<br>' +
+            '• O acesso é cancelado <strong>permanentemente</strong><br>' +
+            '• Os dados são excluídos dos servidores em 24h<br>' +
+            '• Estorno na fatura: <strong>30 a 60 dias</strong> (prazo da administradora)</div>',
             'bot', true
         );
         await delay(500);
         showOptions([
             { label: 'Cancel — I want to continue', userText: 'Keep using', action: mainMenu, primary: true },
             { label: '📄 Generate Report before leaving', userText: 'Report', action: function () { exportReportChat('full'); } },
-            { label: 'Confirm refund', userText: 'I confirm', action: flowRefundForm, danger: true }
+            { label: 'Confirmar cancelamento e reembolso', userText: 'Confirmo o cancelamento', action: flowRefundForm, danger: true }
         ]);
     }
 
@@ -437,15 +406,15 @@
 
         addMessage(
             '<div class="refund-form" id="refund-form">' +
-            '<input type="email" id="refund-email" placeholder="Email used for purchase" required>' +
-            '<input type="text" id="refund-last4" placeholder="Last 4 digits of card" maxlength="4" inputmode="numeric">' +
+            '<input type="email" id="refund-email" placeholder="E-mail utilizado na compra" required>' +
+            '<input type="text" id="refund-last4" placeholder="Últimos 4 dígitos do cartão" maxlength="4" inputmode="numeric">' +
             '<select id="refund-reason">' +
-            '<option value="">Reason for refund</option>' +
+            '<option value="">Motivo do reembolso</option>' +
             '<option value="nao_funciona">It didn\'t work</option>' +
-            '<option value="comprou_errado">Bought by mistake</option>' +
-            '<option value="arrependimento">Changed my mind</option>' +
+            '<option value="comprou_errado">Comprei por engano</option>' +
+            '<option value="arrependimento">Arrependimento da compra</option>' +
             '</select>' +
-            '<button type="button" id="refund-submit">Process refund</button>' +
+            '<button type="button" id="refund-submit">Processar reembolso</button>' +
             '</div>',
             'bot', true
         );
@@ -466,7 +435,7 @@
 
         btn.disabled = true;
         btn.textContent = 'Processing...';
-        addUserMessage('Request refund');
+        addUserMessage('Solicitar reembolso');
 
         await botSay('Connecting to payment gateway...');
         await showTyping(3000);
@@ -474,7 +443,7 @@
         await showTyping(3500);
         await botSay('Transaction found! Sending refund to card issuer...');
         await showTyping(4500);
-        await botSay('Refund confirmed! ✅');
+        await botSay('Reembolso confirmado com sucesso! ✅');
 
         var protocol = generateProtocol();
         localStorage.setItem('areaspy_refund_done', '1');
@@ -490,7 +459,7 @@
         addMessage(buildRefundSuccessHtml(protocol, last4), 'bot', true);
 
         if (refundBar) refundBar.style.display = 'none';
-        showOptions([{ label: 'Got it', userText: 'Thanks', action: endChat }]);
+        showOptions([{ label: 'Entendido', userText: 'Obrigado(a)', action: endChat }]);
     }
 
     async function endChat() {
@@ -500,7 +469,7 @@
 
     function openRefundDirect() {
         clearOptions();
-        addUserMessage('I want to request a refund');
+        addUserMessage('Quero solicitar reembolso');
         flowRefundGate();
     }
 
@@ -517,7 +486,7 @@
     }
 
     if (refundBar) {
-        refundBar.innerHTML = '<button type="button" class="refund-bar-subtle">Questions about refunds?</button>';
+        refundBar.innerHTML = '<button type="button" class="refund-bar-subtle">Dúvidas sobre reembolso?</button>';
         refundBar.querySelector('button').addEventListener('click', openRefundDirect);
         if (refundRequested) refundBar.style.display = 'none';
     }

@@ -21,13 +21,13 @@
         hub.className = 'panel-support-hub';
         hub.innerHTML =
             '<div class="panel-support-head">' +
-            '<span><i class="fa fa-headphones"></i> Ana — 24/7 Support</span>' +
+            '<span><i class="fa fa-headphones"></i> Ana — Suporte 24/7</span>' +
             '<span class="live-badge" style="font-size:0.6rem">ONLINE</span></div>' +
             '<p class="panel-support-desc">Before requesting a refund, chat with us — we can generate your PDF report, release your unlock code, or fix access in minutes.</p>' +
             '<div class="panel-support-actions">' +
             '<a href="' + CHAT_BASE + '#relatorio" class="btn-support-action primary"><i class="fa fa-file-pdf-o"></i> Generate report</a>' +
             '<a href="' + CHAT_BASE + '#codigo" class="btn-support-action"><i class="fa fa-key"></i> Unlock code</a>' +
-            '<a href="' + CHAT_BASE + '" class="btn-support-action"><i class="fa fa-comments"></i> Open chat</a>' +
+            '<a href="' + CHAT_BASE + '" class="btn-support-action"><i class="fa fa-comments"></i> Abrir chat</a>' +
             '</div>';
 
         mount.parentNode.insertBefore(hub, mount);
@@ -57,7 +57,7 @@
         fab.id = 'panel-chat-fab';
         fab.className = 'panel-chat-fab';
         fab.href = CHAT_BASE;
-        fab.title = '24/7 Support';
+        fab.title = 'Suporte 24/7';
         fab.innerHTML = '<i class="fa fa-comments"></i>';
         document.body.appendChild(fab);
     }

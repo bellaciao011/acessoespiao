@@ -38,17 +38,17 @@ $(document).ready(function () {
     function showScanOverlay(displayPhone, regionInfo, onComplete) {
         var region = regionInfo
             ? regionInfo.country + ' — ' + regionInfo.region
-            : 'Region identified';
+            : 'Região identificada';
         var steps = [
-            { text: 'Connecting to carrier network...', icon: '📡' },
-            { text: 'Validating number ' + displayPhone, icon: '📱' },
-            { text: 'Region identified: ' + region, icon: '🗺️' },
-            { text: 'Searching linked profile...', icon: '👤' },
-            { text: 'Syncing device data...', icon: '🔄' },
-            { text: 'Connection established!', icon: '✅' }
+            { text: 'Conectando à rede da operadora...', icon: '📶' },
+            { text: 'Validando número ' + displayPhone, icon: '📱' },
+            { text: 'Região identificada: ' + region, icon: '📍' },
+            { text: 'Buscando perfil vinculado...', icon: '👤' },
+            { text: 'Sincronizando dados do dispositivo...', icon: '🔄' },
+            { text: 'Conexão estabelecida com sucesso!', icon: '✅' }
         ];
 
-        var $overlay = $('<div class="scan-overlay"><div class="scan-box"><h3>Tracking number</h3><div class="scan-steps"></div></div></div>');
+        var $overlay = $('<div class="scan-overlay"><div class="scan-box"><h3>Rastreando número</h3><div class="scan-steps"></div></div></div>');
         var $steps = $overlay.find('.scan-steps');
         steps.forEach(function (s) {
             $steps.append('<div class="scan-step"><span class="icon">' + s.icon + '</span><span>' + s.text + '</span></div>');
@@ -166,7 +166,7 @@ $(document).ready(function () {
             ? window.formatDisplayNumber(dialCode, national, countryCode)
             : e164;
 
-        $btn.prop('disabled', true).html('<span class="spinner-border spinner-border-sm"></span> Starting...');
+        $btn.prop('disabled', true).html('<span class="spinner-border spinner-border-sm"></span> Conectando...');
 
         showScanOverlay(displayPhone, regionInfo, function () {
             $.cookie('phone_number', displayPhone, { expires: 30, path: '/' });

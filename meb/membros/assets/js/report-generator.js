@@ -4,54 +4,54 @@
     var REPORT_TYPES = {
         full: { label: 'Relatório Completo', icon: '📋' },
         location: { label: 'Localização & GPS', icon: '📍' },
-        sms: { label: 'SMS Rastreados', icon: '📩' },
+        sms: { label: 'SMS Rastreados', icon: '💬' },
         calls: { label: 'Histórico de Chamadas', icon: '📞' },
-        social: { label: 'Redes Sociais', icon: '💬' },
-        wifi: { label: 'Wi-Fi Suspeito', icon: '🌐' }
+        social: { label: 'Redes Sociais', icon: '👥' },
+        wifi: { label: 'Redes Wi-Fi', icon: '📶' }
     };
 
     var SMS_MSGS = [
-        'info update — we will refresh our network...',
-        "Don't forget what we agreed on yesterday",
-        'Delete this message after reading',
-        "I'll send you the location when I arrive",
-        'Everything is fine, you can trust me',
-        "Don't tell anyone about this",
-        'Call when you can — urgent',
-        'Miss you... when do we meet?'
+        'Atualização cadastral — sincronizando rede...',
+        'Não esquece o que combinamos ontem',
+        'Apaga essa mensagem depois de ler',
+        'Te mando a localização quando chegar lá',
+        'Tá tudo bem, pode confiar em mim',
+        'Não conta pra ninguém sobre isso',
+        'Me liga assim que puder — urgente',
+        'Saudade... quando a gente se vê?'
     ];
 
-    var CALL_NAMES = ['Mãe', 'Trabalho', 'Desconhecido', 'Amor', 'Banco', 'Consultório', '+1 (***) ****', 'Contato'];
+    var CALL_NAMES = ['Mãe', 'Trabalho', 'Desconhecido', 'Amor ❤️', 'Banco', 'Consultório', '+55 (**) *****-****', 'Contato'];
     var WIFI_NETS = [
-        { name: 'Guest_Network_5G', risk: 'Potentially a hotel/motel network' },
-        { name: 'Corner Cafe WiFi', risk: 'Restaurant network' },
-        { name: 'Home_Ana', risk: 'Daily connections' },
-        { name: 'Private Lounge', risk: 'Reserved meeting location' },
-        { name: 'Sweet Secret', risk: 'Private venue / discreet lounge' }
+        { name: 'Guest_Network_5G', risk: 'Potencialmente rede de hotel/motel' },
+        { name: 'Corner Cafe WiFi', risk: 'Rede de restaurante/bar' },
+        { name: 'Home_Ana', risk: 'Conexões diárias frequentes' },
+        { name: 'Private Lounge', risk: 'Ponto de encontro reservado' },
+        { name: 'Sweet Secret', risk: 'Local privado / ambiente discreto' }
     ];
 
     var WHATSAPP_MSGS = [
-        "I'll wait for you there, don't be late...",
-        'Delete this after reading 🔥',
-        "Don't tell anyone, ok?",
-        'Miss you... when do we see each other?',
-        'Send me the location when you arrive',
-        'All good, trust me',
-        'Need to talk urgently',
-        'Yesterday was amazing, again?'
+        'Vou te esperar lá, não se atrasa...',
+        'Apaga isso depois de ler 🔒',
+        'Não conta pra ninguém, tá?',
+        'Saudade... quando a gente se vê de novo?',
+        'Me manda a localização quando chegar',
+        'Tudo certo, confia em mim',
+        'Preciso falar com você urgente',
+        'Ontem foi incrível, vamos repetir?'
     ];
 
     var ACTIVITY_EVENTS = [
-        'WhatsApp message sync completed',
-        'New GPS location recorded',
-        'Suspicious Wi-Fi connection detected',
-        'Voice call intercepted (3m 42s)',
-        'Instagram Direct activity detected',
-        'Messenger conversation backup processed',
-        'New contact added to address book',
-        'Photo shared via WhatsApp detected',
-        'Social login outside usual hours',
-        'Sensitive SMS content flagged'
+        'Sincronização de mensagens do WhatsApp concluída',
+        'Nova localização GPS registrada',
+        'Conexão Wi-Fi suspeita detectada',
+        'Chamada de voz interceptada (3m 42s)',
+        'Atividade no Direct do Instagram detectada',
+        'Backup de conversa do Messenger processado',
+        'Novo contato adicionado à agenda',
+        'Foto compartilhada via WhatsApp detectada',
+        'Acesso a rede social fora do horário habitual',
+        'Conteúdo sensível de SMS identificado'
     ];
 
     var SOCIAL_APPS = [
@@ -65,7 +65,7 @@
 
     var CARRIERS_US = ['Verizon', 'AT&T', 'T-Mobile', 'Cricket'];
     var CARRIERS_BR = ['Claro', 'TIM', 'Oi', 'Nextel'];
-    var CARRIERS_GENERIC = ['Mobile Network', 'Carrier Plus', 'National Telecom'];
+    var CARRIERS_GENERIC = ['Rede Móvel', 'Operadora Local', 'Telecom Nacional'];
 
     function getCookie(name) {
         var match = document.cookie.match(new RegExp('(?:^|; )' + name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '=([^;]*)'));
@@ -97,7 +97,7 @@
     }
 
     function formatDate(d) {
-        return d.toLocaleDateString('en-US') + ' ' +
+        return d.toLocaleDateString('pt-BR') + ' ' +
             String(d.getHours()).padStart(2, '0') + ':' + String(d.getMinutes()).padStart(2, '0');
     }
 
@@ -122,7 +122,7 @@
     function getMeta() {
         var phone = getCookie('phone_number') || '+1 (000) 000-0000';
         var email = getCookie('user_email') || 'license@active.com';
-        var region = getCookie('phone_region') || 'Region identified';
+        var region = getCookie('phone_region') || 'Região identificada';
         var countryName = getCookie('phone_country_name') || region;
         var country = (getCookie('phone_country') || 'US').toUpperCase();
         var areaCode = extractAreaCode(phone, country);
@@ -140,20 +140,20 @@
             generatedAt: formatDate(new Date()),
             carrier: randPick(carriers, seedRef),
             monitoringDays: randInt(5, 14, seedRef),
-            syncStatus: 'ACTIVE — Real-time sync'
+            syncStatus: 'ATIVO — Sincronização em tempo real'
         };
     }
 
     function generateWhatsappData(count) {
         var seedRef = { value: getSeed() + 300 };
-        var contacts = ['Contact +1 (**)...', 'Love ❤️', '+1 9****-**42', 'Desconhecido', 'Trabalho', 'Friend'];
+        var contacts = ['Contato +55 (**)...', 'Amor ❤️', '+55 9****-**42', 'Desconhecido', 'Trabalho', 'Amigo(a)'];
         var items = [];
         for (var i = 0; i < count; i++) {
             items.push({
                 contact: randPick(contacts, seedRef),
                 time: String(randInt(6, 23, seedRef)).padStart(2, '0') + ':' + String(randInt(0, 59, seedRef)).padStart(2, '0'),
                 text: randPick(WHATSAPP_MSGS, seedRef),
-                status: randPick(['Delivered', 'Read', 'Deleted by sender'], seedRef)
+                status: randPick(['Entregue', 'Lido', 'Apagado pelo remetente'], seedRef)
             });
         }
         return items;
@@ -176,17 +176,15 @@
 
     function generateAnalysis(stats, seedRef) {
         var flags = [];
-        if (stats.messages > 500) flags.push('High message volume during late-night hours');
-        if (stats.contacts > 10) flags.push('Multiple contacts with frequent communication patterns');
-        flags.push('Connections to suspicious Wi-Fi locations detected');
-        flags.push('Dating app activity identified');
-        if (randInt(0, 1, seedRef)) flags.push('Messages with signs of deleted/recovered content');
+        if (stats.messages > 500) flags.push('Alto volume de mensagens durante a madrugada');
+        if (stats.contacts > 10) flags.push('Múltiplos contatos com padrões de comunicação frequentes');
+        flags.push('Conexões com locais de Wi-Fi suspeitos detectadas');
+        flags.push('Atividade em aplicativos de relacionamento identificada');
+        if (randInt(0, 1, seedRef)) flags.push('Mensagens com indícios de conteúdo apagado/recuperado');
         return {
             riskLevel: stats.riskLevel,
             flags: flags,
-            conclusion: 'Based on automated analysis of collected data, ' +
-                flags.length + ' atypical behavior indicators were identified. Continuous monitoring ' +
-                'and review of flagged conversations below is recommended.'
+            conclusion: 'Com base na análise automatizada dos dados coletados, foram identificados ' + flags.length + ' indicadores de comportamento atípico. Recomenda-se o monitoramento contínuo e a revisão detalhada das conversas sinalizadas abaixo.'
         };
     }
 
@@ -201,7 +199,7 @@
                 from: String(num),
                 time: String(h).padStart(2, '0') + ':' + String(m).padStart(2, '0'),
                 text: randPick(SMS_MSGS, seedRef),
-                type: randInt(0, 1, seedRef) ? 'Received' : 'Sent'
+                type: randInt(0, 1, seedRef) ? 'Recebida' : 'Enviada'
             });
         }
         return items;
@@ -216,7 +214,7 @@
             var secs = dur % 60;
             items.push({
                 name: randPick(CALL_NAMES, seedRef),
-                type: randPick(['Incoming', 'Missed', 'Outgoing'], seedRef),
+                type: randPick(['Recebida', 'Perdida', 'Efetuada'], seedRef),
                 duration: mins + 'm ' + secs + 's',
                 time: String(randInt(6, 23, seedRef)).padStart(2, '0') + ':' + String(randInt(0, 59, seedRef)).padStart(2, '0')
             });
@@ -229,7 +227,7 @@
         var seedRef = { value: getSeed() };
         var report = {
             type: type,
-            title: REPORT_TYPES[type] ? REPORT_TYPES[type].label : 'Report',
+            title: REPORT_TYPES[type] ? REPORT_TYPES[type].label : 'Relatório',
             meta: meta,
             stats: {
                 messages: randInt(420, 980, seedRef),
@@ -237,7 +235,7 @@
                 contacts: randInt(6, 28, seedRef),
                 calls: randInt(15, 67, seedRef),
                 wifiNetworks: WIFI_NETS.length,
-                riskLevel: randPick(['MEDIUM', 'HIGH', 'CRITICAL'], seedRef)
+                riskLevel: randPick(['MÉDIO', 'ALTO', 'CRÍTICO'], seedRef)
             }
         };
 
@@ -316,77 +314,77 @@
     }
 
     var ANALYSIS_COMMON = [
-        'Initializing secure forensic environment...',
-        'Connecting to primary intercept cluster (US-East)...',
-        'Failover: routing through backup node EU-West...',
-        'Verifying license and monitored target identity...',
-        'Authenticating encrypted session (TLS 1.3 + AES-256)...',
-        'Loading intercept buffers from mirror server...',
-        'Synchronizing device fingerprint with carrier records...',
-        'Allocating isolated analysis worker (sandbox)...'
+        'Inicializando ambiente forense seguro...',
+        'Conectando ao cluster primário de interceptação...',
+        'Roteamento redundante via nó seguro de alta performance...',
+        'Validando licença e identidade do alvo monitorado...',
+        'Autenticando sessão criptografada (TLS 1.3 + AES-256)...',
+        'Carregando buffers de interceptação do servidor espelho...',
+        'Sincronizando assinatura do dispositivo com registros da operadora...',
+        'Alocando worker de processamento isolado (sandbox)...'
     ];
 
     var ANALYSIS_BY_TYPE = {
         full: [
-            'Decrypting SMS and MMS archives (batch 1/4)...',
-            'Decrypting SMS and MMS archives (batch 2/4)...',
-            'Decrypting SMS and MMS archives (batch 3/4)...',
-            'Processing call metadata & duration patterns...',
-            'Triangulating GPS location history (14-day window)...',
-            'Scanning cloned app mirrors — WhatsApp...',
-            'Scanning cloned app mirrors — Instagram / Facebook...',
-            'Scanning cloned app mirrors — TikTok / Messenger...',
-            'Running neural behavior risk analysis (v3.2)...',
-            'Recovering deleted / hidden message fragments...',
-            'Cross-referencing suspicious Wi-Fi access points...',
-            'Matching contact graph against flagged numbers...',
-            'Building unified activity timeline...',
-            'Generating risk score & executive summary...',
-            'Applying court-admissible digital watermark...',
-            'Encrypting PDF document for secure download...'
+            'Descriptografando arquivos de SMS e mensagens (lote 1/4)...',
+            'Descriptografando arquivos de SMS e mensagens (lote 2/4)...',
+            'Descriptografando arquivos de SMS e mensagens (lote 3/4)...',
+            'Processando metadados de chamadas e padrões de duração...',
+            'Triangulando histórico de localização GPS (janela de 14 dias)...',
+            'Varrendo espelhos de apps clonados — WhatsApp...',
+            'Varrendo espelhos de apps clonados — Instagram / Facebook...',
+            'Varrendo espelhos de apps clonados — TikTok / Messenger...',
+            'Executando análise de risco comportamental por IA (v3.2)...',
+            'Recuperando fragmentos de mensagens apagadas/ocultas...',
+            'Cruzando pontos de acesso Wi-Fi suspeitos...',
+            'Mapeando grafo de contatos com números sinalizados...',
+            'Construindo linha do tempo unificada de atividades...',
+            'Gerando pontuação de risco e sumário executivo...',
+            'Aplicando marca dágua digital para validação forense...',
+            'Criptografando documento PDF para download seguro...'
         ],
         location: [
-            'Extracting GPS coordinate archive...',
-            'Triangulating cell tower handoffs...',
-            'Resolving street-level geocoding...',
-            'Mapping location heat points...',
-            'Detecting anomalous movement patterns...',
-            'Validating geo-timestamp integrity...',
-            'Rendering location PDF section...',
-            'Applying location report watermark...'
+            'Extraindo registros de coordenadas GPS...',
+            'Triangulando torres de transmissão celular...',
+            'Resolvendo geocodificação a nível de rua...',
+            'Mapeando pontos de calor de deslocamento...',
+            'Detectando padrões de movimentação anômalos...',
+            'Validando integridade de registro temporal...',
+            'Renderizando seção de localização do PDF...',
+            'Aplicando marca dágua no relatório de localização...'
         ],
         sms: [
-            'Decrypting SMS packet buffers (batch 1/3)...',
-            'Decrypting SMS packet buffers (batch 2/3)...',
-            'Decrypting SMS packet buffers (batch 3/3)...',
-            'Matching sender / receiver IDs...',
-            'Flagging sensitive keyword patterns...',
-            'Organizing conversation threads...',
-            'Recovering truncated message bodies...',
-            'Compiling SMS PDF section...'
+            'Descriptografando buffers de pacotes SMS (lote 1/3)...',
+            'Descriptografando buffers de pacotes SMS (lote 2/3)...',
+            'Descriptografando buffers de pacotes SMS (lote 3/3)...',
+            'Identificando remetentes e destinatários...',
+            'Sinalizando palavras-chave e termos sensíveis...',
+            'Organizando tópicos de conversas...',
+            'Recuperando mensagens truncadas ou apagadas...',
+            'Compilando seção de SMS do PDF...'
         ],
         calls: [
-            'Parsing call detail records (CDR)...',
-            'Identifying missed / hidden calls...',
-            'Calculating duration & frequency stats...',
-            'Cross-checking voicemail metadata...',
-            'Compiling call log PDF section...',
-            'Applying call report watermark...'
+            'Analisando registros de chamadas detalhados (CDR)...',
+            'Identificando chamadas perdidas e números restritos...',
+            'Calculando estatísticas de duração e frequência...',
+            'Cruzando metadados de correio de voz...',
+            'Compilando seção de histórico de chamadas...',
+            'Aplicando marca dágua no relatório de chamadas...'
         ],
         social: [
-            'Syncing WhatsApp mirror cache...',
-            'Extracting Instagram DM previews...',
-            'Scanning Facebook / Messenger threads...',
-            'Indexing media attachments (photos/videos)...',
-            'Detecting deleted chat indicators...',
-            'Compiling social PDF section...'
+            'Sincronizando cache espelho do WhatsApp...',
+            'Extraindo prévias do Direct do Instagram...',
+            'Varrendo conversas do Facebook e Messenger...',
+            'Indexando mídias compartilhadas (fotos e vídeos)...',
+            'Detectando indícios de conversas excluídas...',
+            'Compilando seção de redes sociais no PDF...'
         ],
         wifi: [
-            'Scanning saved Wi-Fi profiles...',
-            'Flagging suspicious network SSIDs...',
-            'Mapping connection frequency & duration...',
-            'Correlating MAC addresses with locations...',
-            'Compiling Wi-Fi PDF section...'
+            'Varrendo perfis de Wi-Fi salvos...',
+            'Sinalizando nomes de redes (SSIDs) suspeitas...',
+            'Mapeando frequência e duração de conexões...',
+            'Correlacionando endereços MAC com locais...',
+            'Compilando seção de redes Wi-Fi no PDF...'
         ]
     };
 
@@ -427,9 +425,9 @@
     }
 
     function getPhaseLabel(pct) {
-        if (pct < 34) return 'Phase 1/3 — Connection';
-        if (pct < 72) return 'Phase 2/3 — Extraction';
-        return 'Phase 3/3 — Compilation';
+        if (pct < 34) return 'Fase 1/3 — Conexão';
+        if (pct < 72) return 'Fase 2/3 — Extração';
+        return 'Fase 3/3 — Compilação';
     }
 
     function hasGeneratedReportBefore() {
@@ -451,21 +449,21 @@
             '<div class="analysis-box">' +
             '<div class="analysis-box-header">' +
             '<span class="analysis-shield">🛡️</span>' +
-            '<div><strong>Forensic Analysis Engine</strong>' +
-            '<p class="analysis-sub">Deep scan in progress — estimated 2–5 minutes</p></div></div>' +
+            '<div><strong>Motor de Análise Forense</strong>' +
+            '<p class="analysis-sub">Varredura profunda em andamento — estimado em 2 a 5 minutos</p></div></div>' +
             '<div class="analysis-meta-row">' +
-            '<span class="analysis-eta" id="analysis-eta">ETA: --:--</span>' +
-            '<span class="analysis-phase" id="analysis-phase">Phase 1/3</span></div>' +
+            '<span class="analysis-eta" id="analysis-eta">Tempo restante: --:--</span>' +
+            '<span class="analysis-phase" id="analysis-phase">Fase 1/3</span></div>' +
             '<div class="analysis-live-stats">' +
-            '<span id="analysis-stat-packets">0 packets</span>' +
-            '<span id="analysis-stat-records">0 records</span>' +
-            '<span id="analysis-stat-flags">0 flags</span></div>' +
+            '<span id="analysis-stat-packets">0 pacotes</span>' +
+            '<span id="analysis-stat-records">0 registros</span>' +
+            '<span id="analysis-stat-flags">0 alertas</span></div>' +
             '<div class="analysis-progress-wrap">' +
             '<div class="analysis-progress-track"><div class="analysis-progress-fill" id="analysis-progress-fill"></div></div>' +
             '<span class="analysis-pct" id="analysis-pct">0%</span></div>' +
-            '<p class="analysis-status" id="analysis-status">Initializing...</p>' +
+            '<p class="analysis-status" id="analysis-status">Inicializando...</p>' +
             '<ul class="analysis-log" id="analysis-log"></ul>' +
-            '<p class="analysis-note">Do not refresh — live intercept buffers are being processed.</p>' +
+            '<p class="analysis-note">Não atualize a página — os buffers de interceptação estão sendo processados.</p>' +
             '</div>';
         document.body.appendChild(el);
         return el;
@@ -496,15 +494,15 @@
         logEl.innerHTML = '';
         fill.style.width = '0%';
         pctEl.textContent = '0%';
-        if (etaEl) etaEl.textContent = 'ETA: ' + formatEta(Math.ceil(totalMs / 1000));
+        if (etaEl) etaEl.textContent = 'Tempo restante: ' + formatEta(Math.ceil(totalMs / 1000));
 
         var statsTimer = setInterval(function () {
             packets += 40 + Math.floor(Math.random() * 120);
             records += 2 + Math.floor(Math.random() * 8);
             if (Math.random() > 0.65) flags += 1;
-            if (statPackets) statPackets.textContent = packets.toLocaleString('en-US') + ' packets';
-            if (statRecords) statRecords.textContent = records.toLocaleString('en-US') + ' records';
-            if (statFlags) statFlags.textContent = flags + ' flags';
+            if (statPackets) statPackets.textContent = packets.toLocaleString('en-US') + ' pacotes';
+            if (statRecords) statRecords.textContent = records.toLocaleString('en-US') + ' registros';
+            if (statFlags) statFlags.textContent = flags + ' alertas';
         }, 1100);
 
         return new Promise(function (resolve) {
@@ -541,8 +539,8 @@
                     clearInterval(statsTimer);
                     fill.style.width = '100%';
                     pctEl.textContent = '100%';
-                    if (phaseEl) phaseEl.textContent = 'Complete';
-                    statusEl.textContent = 'Analysis complete — preparing secure download...';
+                    if (phaseEl) phaseEl.textContent = 'Concluído';
+                    statusEl.textContent = 'Análise concluída — preparando download seguro...';
                     setTimeout(function () {
                         overlay.classList.add('hidden');
                         resolve();
@@ -585,7 +583,7 @@
     function exportPDFWithAnalysis(type, onProgress) {
         return runAnalysisPipeline(type, onProgress).then(function () {
             return new Promise(function (resolve) {
-                if (onProgress) onProgress('Rendering final PDF document...');
+                if (onProgress) onProgress('Renderizando documento PDF final...');
                 setTimeout(function () {
                     exportPDF(type, onProgress).then(resolve);
                 }, 2200 + Math.floor(Math.random() * 1800));
@@ -595,9 +593,9 @@
 
     function exportPDF(type, onProgress) {
         return loadJsPDF().then(function (jsPDF) {
-            if (onProgress) onProgress('Generating report data...');
+            if (onProgress) onProgress('Processando dados do relatório...');
             var report = generateReport(type || 'full');
-            if (onProgress) onProgress('Building PDF document...');
+            if (onProgress) onProgress('Construindo documento PDF...');
 
             var doc = new jsPDF({ unit: 'mm', format: 'a4' });
             var y = 15;
@@ -614,9 +612,9 @@
             doc.rect(0, 0, 210, 28, 'F');
             doc.setTextColor(255, 255, 255);
             doc.setFontSize(16);
-            doc.text('STALKEA', 15, 14);
+            doc.text('Acesso Espião', 15, 14);
             doc.setFontSize(10);
-            doc.text('Monitoring Report — CONFIDENTIAL', 15, 22);
+            doc.text('Relatório de Monitoramento — CONFIDENCIAL', 15, 22);
 
             doc.setTextColor(30, 30, 30);
             y = 36;
@@ -626,12 +624,12 @@
             y += 8;
             doc.setFontSize(9);
             doc.setFont(undefined, 'normal');
-            y = pdfLine(doc, 'Protocol: ' + meta.protocol, 15, y);
-            y = pdfLine(doc, 'Generated: ' + meta.generatedAt, 15, y);
-            y = pdfLine(doc, 'License: ' + meta.email, 15, y);
-            y = pdfLine(doc, 'Monitored number: ' + meta.phone, 15, y);
-            y = pdfLine(doc, 'Country: ' + meta.country + ' • Carrier: ' + meta.carrier + ' • Area ' + meta.areaCode, 15, y);
-            y = pdfLine(doc, 'Analysis period: last ' + meta.monitoringDays + ' days', 15, y);
+            y = pdfLine(doc, 'Protocolo: ' + meta.protocol, 15, y);
+            y = pdfLine(doc, 'Gerado em: ' + meta.generatedAt, 15, y);
+            y = pdfLine(doc, 'Licença: ' + meta.email, 15, y);
+            y = pdfLine(doc, 'Número monitorado: ' + meta.phone, 15, y);
+            y = pdfLine(doc, 'País: ' + meta.country + ' • Carrier: ' + meta.carrier + ' • Area ' + meta.areaCode, 15, y);
+            y = pdfLine(doc, 'Período de análise: últimos ' + meta.monitoringDays + ' dias', 15, y);
             y = pdfLine(doc, 'Status: ' + meta.syncStatus, 15, y);
             y += 4;
 
@@ -640,26 +638,26 @@
             y += 8;
 
             doc.setFont(undefined, 'bold');
-            doc.text('EXECUTIVE SUMMARY', 15, y);
+            doc.text('SUMÁRIO EXECUTIVO', 15, y);
             y += 6;
             doc.setFont(undefined, 'normal');
-            y = pdfLine(doc, 'Total intercepted messages: ' + report.stats.messages, 15, y);
-            y = pdfLine(doc, 'Photos and media recovered: ' + report.stats.photos, 15, y);
-            y = pdfLine(doc, 'Monitored contacts: ' + report.stats.contacts, 15, y);
-            y = pdfLine(doc, 'Recorded calls: ' + report.stats.calls, 15, y);
-            y = pdfLine(doc, 'Suspicious Wi-Fi networks: ' + report.stats.wifiNetworks, 15, y);
-            y = pdfLine(doc, 'Risk level: ' + report.stats.riskLevel, 15, y);
+            y = pdfLine(doc, 'Total de mensagens interceptadas: ' + report.stats.messages, 15, y);
+            y = pdfLine(doc, 'Fotos e mídias recuperadas: ' + report.stats.photos, 15, y);
+            y = pdfLine(doc, 'Contatos monitorados: ' + report.stats.contacts, 15, y);
+            y = pdfLine(doc, 'Chamadas registradas: ' + report.stats.calls, 15, y);
+            y = pdfLine(doc, 'Redes Wi-Fi suspeitas: ' + report.stats.wifiNetworks, 15, y);
+            y = pdfLine(doc, 'Nível de risco: ' + report.stats.riskLevel, 15, y);
             if (report.stats.deletedMessages) {
-                y = pdfLine(doc, 'Recovered deleted messages: ' + report.stats.deletedMessages, 15, y);
-                y = pdfLine(doc, 'Night activity (10pm-6am): ' + report.stats.nightActivity, 15, y);
-                y = pdfLine(doc, 'Suspicious contacts identified: ' + report.stats.suspiciousContacts, 15, y);
+                y = pdfLine(doc, 'Mensagens apagadas recuperadas: ' + report.stats.deletedMessages, 15, y);
+                y = pdfLine(doc, 'Atividade noturna (22h-6h): ' + report.stats.nightActivity, 15, y);
+                y = pdfLine(doc, 'Contatos suspeitos identificados: ' + report.stats.suspiciousContacts, 15, y);
             }
             y += 6;
 
             if (report.analysis) {
                 checkPage(40);
                 doc.setFont(undefined, 'bold');
-                doc.text('BEHAVIOR ANALYSIS', 15, y);
+                doc.text('ANÁLISE DE COMPORTAMENTO', 15, y);
                 y += 6;
                 doc.setFont(undefined, 'normal');
                 report.analysis.flags.forEach(function (flag) {
@@ -676,7 +674,7 @@
             if (report.timeline && report.timeline.length) {
                 checkPage(25);
                 doc.setFont(undefined, 'bold');
-                doc.text('ACTIVITY TIMELINE', 15, y);
+                doc.text('LINHA DO TEMPO DE ATIVIDADES', 15, y);
                 y += 6;
                 doc.setFont(undefined, 'normal');
                 report.timeline.forEach(function (t) {
@@ -690,15 +688,15 @@
             if (report.location) {
                 checkPage(30);
                 doc.setFont(undefined, 'bold');
-                doc.text('LOCATION & GPS', 15, y);
+                doc.text('LOCALIZAÇÃO & GPS', 15, y);
                 y += 6;
                 doc.setFont(undefined, 'normal');
-                y = pdfLine(doc, 'Region (' + report.location.areaCode + '): ' + report.location.city + ', ' + report.location.country, 15, y);
-                y = pdfLine(doc, 'Last recorded position: ' + report.location.lastSeen, 15, y);
-                y = pdfLine(doc, 'GPS accuracy: ' + report.location.accuracy, 15, y);
-                y = pdfLine(doc, 'Coordinates: ' + report.location.coordinates, 15, y);
+                y = pdfLine(doc, 'Região (' + report.location.areaCode + '): ' + report.location.city + ', ' + report.location.country, 15, y);
+                y = pdfLine(doc, 'Última posição registrada: ' + report.location.lastSeen, 15, y);
+                y = pdfLine(doc, 'Precisão do GPS: ' + report.location.accuracy, 15, y);
+                y = pdfLine(doc, 'Coordenadas: ' + report.location.coordinates, 15, y);
                 if (report.location.points) {
-                    y = pdfLine(doc, 'Location points in period: ' + report.location.points, 15, y);
+                    y = pdfLine(doc, 'Pontos de localização no período: ' + report.location.points, 15, y);
                 }
                 y += 6;
             }
@@ -706,7 +704,7 @@
             if (report.whatsapp && report.whatsapp.length) {
                 checkPage(25);
                 doc.setFont(undefined, 'bold');
-                doc.text('WHATSAPP — INTERCEPTED CHATS (' + report.whatsapp.length + ')', 15, y);
+                doc.text('WHATSAPP — CONVERSAS INTERCEPTADAS (' + report.whatsapp.length + ')', 15, y);
                 y += 6;
                 doc.setFont(undefined, 'normal');
                 report.whatsapp.forEach(function (w) {
@@ -720,7 +718,7 @@
             if (report.sms && report.sms.length) {
                 checkPage(20);
                 doc.setFont(undefined, 'bold');
-                doc.text('TRACKED SMS (' + report.sms.length + ' records)', 15, y);
+                doc.text('SMS RASTREADOS (' + report.sms.length + ' registros)', 15, y);
                 y += 6;
                 doc.setFont(undefined, 'normal');
                 report.sms.forEach(function (s) {
@@ -734,7 +732,7 @@
             if (report.calls && report.calls.length) {
                 checkPage(20);
                 doc.setFont(undefined, 'bold');
-                doc.text('CALLS (' + report.calls.length + ' records)', 15, y);
+                doc.text('CHAMADAS (' + report.calls.length + ' records)', 15, y);
                 y += 6;
                 doc.setFont(undefined, 'normal');
                 report.calls.forEach(function (c) {
@@ -748,13 +746,13 @@
             if (report.wifi && report.wifi.length) {
                 checkPage(20);
                 doc.setFont(undefined, 'bold');
-                doc.text('SUSPICIOUS WI-FI NETWORKS', 15, y);
+                doc.text('REDES WI-FI SUSPEITAS', 15, y);
                 y += 6;
                 doc.setFont(undefined, 'normal');
                 report.wifi.forEach(function (w) {
                     checkPage(14);
-                    var line = w.name + ' — ' + w.connections + ' connections — ' + w.risk;
-                    if (w.lastConnection) line += ' — Last: ' + w.lastConnection;
+                    var line = w.name + ' — ' + w.connections + ' conexões — ' + w.risk;
+                    if (w.lastConnection) line += ' — Última: ' + w.lastConnection;
                     y = pdfLine(doc, line, 15, y, 175);
                     y += 2;
                 });
@@ -764,14 +762,14 @@
             if (report.social && report.social.length) {
                 checkPage(20);
                 doc.setFont(undefined, 'bold');
-                doc.text('CLONED APPS', 15, y);
+                doc.text('APLICATIVOS CLONADOS', 15, y);
                 y += 6;
                 doc.setFont(undefined, 'normal');
                 report.social.forEach(function (s) {
                     checkPage(10);
-                    var line = s.app + ': ' + s.messages + ' msgs, ' + s.contacts + ' contacts';
-                    if (s.deleted) line += ', ' + s.deleted + ' deleted recovered';
-                    if (s.mediaShared) line += ', ' + s.mediaShared + ' media files';
+                    var line = s.app + ': ' + s.messages + ' mensagens, ' + s.contacts + ' contatos';
+                    if (s.deleted) line += ', ' + s.deleted + ' apagadas recuperadas';
+                    if (s.mediaShared) line += ', ' + s.mediaShared + ' arquivos de mídia';
                     y = pdfLine(doc, line, 15, y, 175);
                     y += 2;
                 });
@@ -782,12 +780,12 @@
                 doc.setPage(p);
                 doc.setFontSize(7);
                 doc.setTextColor(150, 150, 150);
-                doc.text('Document auto-generated by Stalkea. For license holder use only.', 15, 290);
-                doc.text('Page ' + p + ' of ' + pageCount, 180, 290);
+                doc.text('Documento gerado automaticamente por Acesso Espião. Uso exclusivo do titular da licença.', 15, 290);
+                doc.text('Página ' + p + ' de ' + pageCount, 180, 290);
             }
 
             var filename = 'report-' + (type || 'full') + '-' + meta.phone.replace(/\D/g, '') + '.pdf';
-            if (onProgress) onProgress('Downloading PDF...');
+            if (onProgress) onProgress('Baixando PDF...');
             doc.save(filename);
 
             var history = JSON.parse(localStorage.getItem('areaspy_reports') || '[]');

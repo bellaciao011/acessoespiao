@@ -37,7 +37,7 @@ $(document).ready(function () {
             '<div class="verify-overlay">' +
             '<div class="verify-box">' +
             '<div class="spinner-border text-success" role="status"></div>' +
-            '<p class="verify-status mb-0">Verifying license...</p>' +
+            '<p class="verify-status mb-0">Verificando licença...</p>' +
             '</div></div>'
         );
         $('body').append($overlay);

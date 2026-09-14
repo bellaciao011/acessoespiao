@@ -155,11 +155,11 @@
     function buildRefundSuccessHtml(protocol, last4) {
         return '<div class="refund-success">' +
             '<i class="fa fa-check-circle"></i>' +
-            '<h3>✅ Refund processed successfully</h3>' +
-            '<p>Your refund was submitted to the card issuer for the card ending in <strong>' + last4 + '</strong>.</p>' +
-            '<p style="margin-top:0.75rem"><strong>⏳ Billing statement:</strong> it may take <strong>30 to 60 days</strong> to appear on your statement, per issuer timelines.</p>' +
-            '<p style="margin-top:0.5rem;font-size:0.8rem">Keep your protocol number: <strong>#' + protocol + '</strong></p>' +
-            '<p style="margin-top:0.5rem;font-size:0.75rem;opacity:0.8">Your access has been closed per our refund policy.</p>' +
+            '<h3>✅ Reembolso processado com sucesso</h3>' +
+            '<p>Sua solicitação de estorno foi enviada à administradora do cartão de final <strong>' + last4 + '</strong>.</p>' +
+            '<p style="margin-top:0.75rem"><strong>💳 Extrato da fatura:</strong> pode levar de <strong>30 a 60 dias</strong> para constar no seu extrato, de acordo com as normas da sua emissora.</p>' +
+            '<p style="margin-top:0.5rem;font-size:0.8rem">Guarde seu número de protocolo: <strong>#' + protocol + '</strong></p>' +
+            '<p style="margin-top:0.5rem;font-size:0.75rem;opacity:0.8">Seu acesso foi encerrado conforme nossa política de reembolso.</p>' +
             '</div>';
     }
 
@@ -171,24 +171,24 @@
 
     function analysisStatusText() {
         var s = getAnalysisState();
-        return 'You are currently on <strong>Day ' + s.dayNum + '</strong> of analysis (' + s.pct + '%). ' +
-            'Estimated time remaining: <strong>' + s.daysLeftLabel + '</strong>.';
+        return 'Você está atualmente no <strong>Dia ' + s.dayNum + '</strong> da análise (' + s.pct + '%). ' +
+            'Tempo restante estimado: <strong>' + s.daysLeftLabel + '</strong>.';
     }
 
     async function startFlow() {
         if (refundRequested) {
-            await botSay('Hi! I found your refund protocol in our system.');
+            await botSay('Olá! Localizei seu protocolo de reembolso em nosso sistema.');
             showRefundDone();
             showOptions([
-                { label: 'Another question', userText: 'I have another question', action: mainMenu, primary: true },
-                { label: 'End chat', userText: 'Thanks', action: endChat }
+                { label: 'Outra dúvida', userText: 'Tenho outra dúvida', action: mainMenu, primary: true },
+                { label: 'Encerrar chat', userText: 'Obrigado(a)', action: endChat }
             ]);
             return;
         }
 
-        await botSay('Hi! 👋 I\'m <strong>Ana</strong> from <strong>Stalkea</strong> support.');
+        await botSay('Olá! 👋 Sou a <strong>Ana</strong> do suporte do <strong>Acesso Espião</strong>.');
         await delay();
-        await botSay('I\'m online now and can help with access, tracking, or deep analysis status.');
+        await botSay('Estou online agora e posso te ajudar com acesso, rastreamento ou status da análise forense.');
         await delay();
         await botSay(
             '💡 <strong>Important:</strong> cloned apps (WhatsApp, Instagram, etc.) run a <strong>10 to 20 day</strong> deep forensic analysis due to high data demand. ' +
@@ -198,9 +198,9 @@
         showOptions([
             { label: '⏳ Analysis status', userText: 'What is my analysis status?', action: flowAnalysis, primary: true },
             { label: '🔐 Access issue', userText: 'I can\'t access my panel', action: flowAccess },
-            { label: '📍 Tracking', userText: 'Tracking question', action: flowTracking },
-            { label: '📱 App won\'t open', userText: 'App won\'t open', action: flowApps },
-            { label: '💳 Refund', userText: 'I want a refund', action: flowRefundGate, danger: true }
+            { label: '📍 Rastreamento', userText: 'Dúvida sobre o rastreamento', action: flowTracking },
+            { label: '📱 Aplicativo não abre', userText: 'O aplicativo não está abrindo', action: flowApps },
+            { label: '💳 Reembolso', userText: 'Quero reembolso', action: flowRefundGate, danger: true }
         ]);
     }
 
@@ -208,10 +208,10 @@
         showOptions([
             { label: '⏳ Analysis status', userText: 'Analysis status', action: flowAnalysis, primary: true },
             { label: '🔐 Access', userText: 'Access problem', action: flowAccess },
-            { label: '📍 Tracking', userText: 'Tracking', action: flowTracking },
-            { label: '📱 Cloned apps', userText: 'Apps won\'t open', action: flowApps },
-            { label: '📧 Daily emails', userText: 'About daily emails', action: flowEmails },
-            { label: '💳 Refund', userText: 'Refund', action: flowRefundGate, danger: true }
+            { label: '📍 Rastreamento', userText: 'Rastreamento', action: flowTracking },
+            { label: '📱 Apps clonados', userText: 'Apps não abrem', action: flowApps },
+            { label: '📧 E-mails diários', userText: 'Sobre os e-mails diários', action: flowEmails },
+            { label: '💳 Reembolso', userText: 'Reembolso', action: flowRefundGate, danger: true }
         ]);
     }
 
@@ -219,23 +219,23 @@
         await botSay(pickAck());
         await delay();
         await botSayLines([
-            'After you register your email and phone number, our system sends <strong>daily updates</strong> with analysis progress.',
-            'You also receive alerts when new events are detected on the monitored number. Check your inbox and spam folder.',
+            'Assim que você cadastra seu e-mail e número de telefone, nosso sistema passa a enviar <strong>atualizações diárias</strong> com o progresso da análise forense.',
+            'Você também recebe alertas quando novos eventos são detectados no número monitorado. Lembre-se de conferir sua caixa de entrada e pasta de spam.',
             analysisStatusText()
         ]);
         stallAndReturn();
     }
 
     async function flowAnalysis() {
-        await botSay(pickAck() + ' Here is how your analysis is progressing.');
+        await botSay(pickAck() + ' Veja como está o progresso da sua análise:');
         await delay();
         await botSayLines([
-            'Cloned apps decrypt on our secure cluster. Because of data volume, full mirror access takes <strong>10 to 20 days</strong>.',
+            'Os aplicativos clonados são descriptografados em nosso cluster seguro. Devido ao grande volume de dados, o espelhamento completo leva de <strong>10 a 20 dias</strong>.',
             analysisStatusText(),
-            'Meanwhile, <strong>SMS, calls, Wi-Fi and location</strong> are available in your panel. Cloned apps show buffered previews until the window completes.'
+            'Enquanto isso, <strong>SMS, chamadas, Wi-Fi e localização</strong> já estão disponíveis no seu painel. Os aplicativos clonados exibem prévias parciais até a conclusão da análise.'
         ]);
         showOptions([
-            { label: '📱 Open panel', userText: 'Open panel', action: goDashboard, primary: true },
+            { label: '📱 Abrir painel', userText: 'Abrir painel', action: goDashboard, primary: true },
             { label: '← Menu', userText: 'Menu', action: mainMenu }
         ]);
     }
@@ -243,8 +243,8 @@
     async function flowAccess() {
         await botSay('Vamos resolver isso. Você está entrando com o <strong>mesmo e-mail utilizado na compra</strong>?');
         showOptions([
-            { label: 'Yes, same email', userText: 'Yes, same email', action: accessVerify, primary: true },
-            { label: 'I don\'t remember', userText: 'I don\'t remember', action: accessEmailHelp }
+            { label: 'Sim, o mesmo e-mail', userText: 'Sim, o mesmo e-mail', action: accessVerify, primary: true },
+            { label: 'Não me lembro', userText: 'Não me lembro', action: accessEmailHelp }
         ]);
     }
 
@@ -256,27 +256,27 @@
     async function accessVerify() {
         await botSay('One moment, checking your license…');
         await showTyping(rand(2200, 3400));
-        await botSay('✅ License is <strong>active</strong> on our side. Clear your browser cache (Ctrl+F5) and try again.');
+        await botSay('✅ Sua licença consta como <strong>ativa</strong> em nossos servidores. Recomendamos limpar o cache do navegador (Ctrl+F5) e tentar novamente.');
         stallAndReturn();
     }
 
     async function flowTracking() {
-        await botSay('The first tracking run takes <strong>2 to 5 minutes</strong>. Did you wait for the progress bar to reach 100%?');
+        await botSay('O primeiro rastreamento leva de <strong>2 a 5 minutos</strong>. Você aguardou a barra de progresso atingir 100%?');
         showOptions([
-            { label: 'Yes, I waited', userText: 'I waited until the end', action: trackingVerify, primary: true },
-            { label: 'I left early', userText: 'I left before it finished', action: trackingWait }
+            { label: 'Sim, aguardei', userText: 'Aguardei até o fim', action: trackingVerify, primary: true },
+            { label: 'Saí antes de terminar', userText: 'Saí antes de terminar', action: trackingWait }
         ]);
     }
 
     async function trackingWait() {
-        await botSay('You need to let the process finish. Go back to tracking, wait for the bar to complete, then open your dashboard.');
+        await botSay('É necessário deixar o processo concluir. Volte à tela de rastreamento, aguarde a barra atingir 100% e depois acesse seu painel.');
         stallAndReturn();
     }
 
     async function trackingVerify() {
         await botSay('Checking our servers…');
         await showTyping(rand(2500, 3800));
-        await botSay('✅ Tracking completed on our side. Open your panel to review SMS, calls, location and Wi-Fi.');
+        await botSay('✅ Rastreamento concluído com sucesso em nossos servidores! Acesse seu painel para visualizar SMS, chamadas, localização e redes Wi-Fi.');
         showOptions([
             { label: '📱 Open panel', userText: 'Open panel', action: goDashboard, primary: true },
             { label: '← Menu', userText: 'Menu', action: mainMenu }
@@ -298,7 +298,7 @@
         await delay(200);
         showOptions([
             { label: '⏳ Analysis status', userText: 'Analysis status', action: flowAnalysis, primary: true },
-            { label: 'Another issue', userText: 'Another issue', action: mainMenu },
+            { label: 'Outro assunto', userText: 'Outro assunto', action: mainMenu },
             { label: 'End chat', userText: 'Thanks', action: endChat }
         ]);
     }
@@ -309,7 +309,7 @@
         notifyRefundAttempt(refundAttempts);
 
         if (refundAttempts === 1) {
-            await botSay('I understand your concern. Have you checked the <strong>analysis status</strong> in your panel?');
+            await botSay('Entendo sua preocupação. Você já conferiu o <strong>status da análise</strong> no seu painel?');
             await delay();
             await botSay(
                 'Deep analysis takes <strong>10 to 20 days</strong> and we send <strong>daily progress by email</strong>. ' +
@@ -317,8 +317,8 @@
             );
             showOptions([
                 { label: '⏳ Check analysis status', userText: 'Check analysis status', action: flowAnalysis, primary: true },
-                { label: 'Help me fix access', userText: 'I need help', action: mainMenu },
-                { label: 'Continue with refund', userText: 'Continue with refund', action: flowRefundGate, danger: true }
+                { label: 'Me ajude com o acesso', userText: 'Preciso de ajuda com o acesso', action: mainMenu },
+                { label: 'Continuar com reembolso', userText: 'Quero continuar com o reembolso', action: flowRefundGate, danger: true }
             ]);
             return;
         }
@@ -335,7 +335,7 @@
         }
 
         if (refundAttempts === 3) {
-            await botSay('OK. Please confirm you completed <strong>all</strong> of these steps:');
+            await botSay('Tudo bem. Por favor, confirme se você concluiu <strong>todas</strong> estas etapas:');
             showRefundChecklist();
             return;
         }
@@ -346,11 +346,11 @@
     function showRefundChecklist() {
         addMessage(
             '<div class="chat-checklist" id="refund-checklist">' +
-            '<label><input type="checkbox" id="ck1"> I logged in with my purchase email</label>' +
-            '<label><input type="checkbox" id="ck2"> I entered the phone number with the correct area code</label>' +
-            '<label><input type="checkbox" id="ck3"> I waited for tracking to complete (100%)</label>' +
-            '<label><input type="checkbox" id="ck4"> I opened cloned apps in the panel</label>' +
-            '<button type="button" id="checklist-submit" class="chat-option-btn primary" style="width:100%;margin-top:8px;border-radius:6px">Continue</button>' +
+            '<label><input type="checkbox" id="ck1"> Fiz login com o e-mail da compra</label>' +
+            '<label><input type="checkbox" id="ck2"> Digitei o número de telefone com o DDD correto</label>' +
+            '<label><input type="checkbox" id="ck3"> Aguardei o rastreamento atingir 100%</label>' +
+            '<label><input type="checkbox" id="ck4"> Abri os aplicativos no painel</label>' +
+            '<button type="button" id="checklist-submit" class="chat-option-btn primary" style="width:100%;margin-top:8px;border-radius:6px">Continuar</button>' +
             '</div>',
             'bot', true
         );
@@ -366,23 +366,23 @@
         if (checklist) checklist.closest('.chat-msg').remove();
 
         if (!all) {
-            addUserMessage('I didn\'t complete all steps');
+            addUserMessage('Não completei todas as etapas');
             await botSay('I recommend finishing the full flow and exploring SMS, calls and location — most customers find what they need that way 😊');
             showOptions([
                 { label: '📱 Open panel', userText: 'Open panel', action: goDashboard, primary: true },
-                { label: 'Guide me step by step', userText: 'Help me', action: mainMenu },
-                { label: 'Refund anyway', userText: 'Refund anyway', action: forceRefundWarning, danger: true }
+                { label: 'Me guie passo a passo', userText: 'Me ajude passo a passo', action: mainMenu },
+                { label: 'Quero reembolso mesmo assim', userText: 'Reembolso mesmo assim', action: forceRefundWarning, danger: true }
             ]);
             return;
         }
 
-        addUserMessage('I completed all steps');
-        await botSay('Great. If you saw data in the panel, the service was delivered as described.');
+        addUserMessage('Completei todas as etapas');
+        await botSay('Perfeito. Se você já visualizou os dados no painel, o serviço foi entregue conforme contratado.');
         await delay();
-        await botSay('Are you sure you want a refund? Access will be closed and data deleted within 24 hours.');
+        await botSay('Tem certeza de que deseja solicitar o reembolso? O acesso será cancelado e os dados excluídos em até 24 horas.');
         showOptions([
-            { label: '📱 Check panel first', userText: 'Open panel', action: goDashboard, primary: true },
-            { label: 'Confirm refund', userText: 'I confirm refund', action: forceRefundWarning, danger: true }
+            { label: '📱 Conferir painel primeiro', userText: 'Abrir painel', action: goDashboard, primary: true },
+            { label: 'Confirmar reembolso', userText: 'Confirmo o reembolso', action: forceRefundWarning, danger: true }
         ]);
     }
 
@@ -397,39 +397,39 @@
         refundAttempts = Math.max(refundAttempts, 4);
         localStorage.setItem('areaspy_refund_attempts', String(refundAttempts));
 
-        await botSay('⚠️ Final refund notice:');
+        await botSay('⚠️ Aviso final sobre o reembolso:');
         addMessage(
             '<div class="alert-panel">' +
-            '<strong>Attention:</strong> when you confirm a refund:<br>' +
-            '• Access is canceled <strong>permanently</strong><br>' +
-            '• Data is deleted from servers within 24h<br>' +
-            '• Statement credit: <strong>30 to 60 days</strong> (issuer timeline)</div>',
+            '<strong>Atenção:</strong> ao confirmar o reembolso:<br>' +
+            '• O acesso é cancelado <strong>permanentemente</strong><br>' +
+            '• Os dados são excluídos dos servidores em 24h<br>' +
+            '• Estorno na fatura: <strong>30 a 60 dias</strong> (prazo da administradora)</div>',
             'bot', true
         );
         await delay(400);
         showOptions([
             { label: 'Cancel — keep my access', userText: 'Keep using the service', action: mainMenu, primary: true },
-            { label: 'Confirm refund', userText: 'I confirm', action: flowRefundForm, danger: true }
+            { label: 'Confirmar cancelamento e reembolso', userText: 'Confirmo o cancelamento', action: flowRefundForm, danger: true }
         ]);
     }
 
     async function flowRefundForm() {
-        await botSay('To locate your transaction, please fill in the details below:');
+        await botSay('Para localizar sua transação, preencha os dados abaixo:');
         await delay(200);
 
         var prefilled = getUserEmail();
         addMessage(
             '<div class="refund-form" id="refund-form">' +
-            '<input type="email" id="refund-email" placeholder="Email used for purchase" required>' +
-            '<input type="text" id="refund-last4" placeholder="Last 4 digits of card" maxlength="4" inputmode="numeric">' +
+            '<input type="email" id="refund-email" placeholder="E-mail utilizado na compra" required>' +
+            '<input type="text" id="refund-last4" placeholder="Últimos 4 dígitos do cartão" maxlength="4" inputmode="numeric">' +
             '<select id="refund-reason">' +
-            '<option value="">Reason for refund</option>' +
+            '<option value="">Motivo do reembolso</option>' +
             '<option value="nao_funciona">It didn\'t work</option>' +
-            '<option value="comprou_errado">Bought by mistake</option>' +
-            '<option value="arrependimento">Changed my mind</option>' +
-            '<option value="demora">Analysis took too long</option>' +
+            '<option value="comprou_errado">Comprei por engano</option>' +
+            '<option value="arrependimento">Arrependimento da compra</option>' +
+            '<option value="demora">A análise demorou muito</option>' +
             '</select>' +
-            '<button type="button" id="refund-submit">Process refund</button>' +
+            '<button type="button" id="refund-submit">Processar reembolso</button>' +
             '</div>',
             'bot', true
         );
@@ -447,13 +447,13 @@
         var btn = document.getElementById('refund-submit');
 
         if (!email || !reason || last4.length !== 4 || !/^\d{4}$/.test(last4)) {
-            await botSay('Please enter your email, reason, and the <strong>4 digits</strong> of your card.');
+            await botSay('Por favor, informe seu e-mail, motivo e os <strong>4 últimos dígitos</strong> do cartão.');
             return;
         }
 
         btn.disabled = true;
         btn.textContent = 'Processing…';
-        addUserMessage('Request refund');
+        addUserMessage('Solicitar reembolso');
 
         await botSay('Connecting to payment gateway…');
         await showTyping(rand(2400, 3200));
@@ -461,7 +461,7 @@
         await showTyping(rand(2800, 4000));
         await botSay('Transaction found. Submitting refund to card issuer…');
         await showTyping(rand(3200, 4800));
-        await botSay('Refund confirmed! ✅');
+        await botSay('Reembolso confirmado com sucesso! ✅');
 
         var protocol = generateProtocol();
         localStorage.setItem('areaspy_refund_done', '1');
@@ -479,7 +479,7 @@
         addMessage(buildRefundSuccessHtml(protocol, last4), 'bot', true);
 
         if (refundBar) refundBar.style.display = 'none';
-        showOptions([{ label: 'Got it', userText: 'Thanks', action: endChat }]);
+        showOptions([{ label: 'Entendido', userText: 'Obrigado(a)', action: endChat }]);
     }
 
     async function endChat() {
@@ -489,18 +489,18 @@
 
     function openRefundDirect() {
         clearOptions();
-        addUserMessage('I want to request a refund');
+        addUserMessage('Quero solicitar reembolso');
         flowRefundGate();
     }
 
     function openAnalysisFlow() {
         clearOptions();
-        addUserMessage('What is my analysis status?');
+        addUserMessage('Qual é o status da minha análise?');
         flowAnalysis();
     }
 
     if (refundBar) {
-        refundBar.innerHTML = '<button type="button" class="refund-bar-subtle">Questions about refunds?</button>';
+        refundBar.innerHTML = '<button type="button" class="refund-bar-subtle">Dúvidas sobre reembolso?</button>';
         refundBar.querySelector('button').addEventListener('click', openRefundDirect);
         if (refundRequested) refundBar.style.display = 'none';
     }

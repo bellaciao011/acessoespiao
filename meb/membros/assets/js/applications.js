@@ -17,7 +17,7 @@ function updateUserProfileInfo(cleanNumber) {
 
     var regionText = phoneCountryName && phoneRegion
         ? phoneCountryName + ' — ' + phoneRegion
-        : (phoneRegion || 'Region identified');
+        : (phoneRegion || 'Região identificada');
     $('.panel-device-region').text(regionText);
 
     var $avatar = $('.picture_profile');
@@ -206,7 +206,7 @@ function buildUnlockExtras(modalBody, modalId) {
             '<div class="unlock-sync-box" data-start="' + startPct + '">' +
             '<div class="sync-label"><span>🔄 Sync in progress</span><span class="sync-pct">' + startPct + '%</span></div>' +
             '<div class="unlock-sync-track"><div class="unlock-sync-fill" style="width:' + startPct + '%"></div></div>' +
-            '<div class="unlock-sync-log">Connecting to mirror server...</div></div>';
+            '<div class="unlock-sync-log">Conectando ao servidor espelho...</div></div>';
         parent.insertAdjacentHTML('beforebegin', syncHtml);
     }
 
@@ -489,7 +489,7 @@ document.addEventListener('DOMContentLoaded', function () {
             try {
                 var response = await fetch(modalPath);
                 if (!response.ok) {
-                    throw new Error('Failed to load');
+                    throw new Error('Falha ao carregar');
                 }
                 var data = await response.text();
                 var tempDiv = document.createElement('div');

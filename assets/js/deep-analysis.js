@@ -9,7 +9,7 @@
         headline: 'Análise profunda em andamento',
         lead: 'A análise profunda está em execução — o primeiro relatório pode levar de 2 a 5 minutos. Enviamos atualizações diárias por e-mail.',
         window: '10 a 20 dias',
-        windowShort: '10–20 dias',
+        windowShort: '10 a 20 dias',
         note: 'Devido à alta demanda de dados neste dispositivo, o processamento leva mais tempo. Aplicativos sociais clonados são liberados após o período indicado. SMS, chamadas e Wi-Fi permanecem disponíveis imediatamente.',
         warning: '⚠️ Por favor, não cancele nem solicite reembolso antes do término do processo, ou todo o progresso será perdido. ⚠️',
         modal: 'Devido à alta demanda de dados, conclusão estimada: 10 a 20 dias a partir da ativação da licença.',

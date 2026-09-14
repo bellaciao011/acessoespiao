@@ -19,7 +19,7 @@ function updateUserProfileInfo(cleanNumber) {
 
     var regionText = phoneCountryName && phoneRegion
         ? phoneCountryName + ' — ' + phoneRegion
-        : (phoneRegion || 'Region identified');
+        : (phoneRegion || 'Região identificada');
     $('.panel-device-region').text(regionText);
 
     var $avatar = $('.picture_profile');
@@ -68,7 +68,7 @@ function getDeepAnalysisState() {
     if (window.AreaspyAnalysis && AreaspyAnalysis.getState) {
         return AreaspyAnalysis.getState();
     }
-    return { pct: 3, dayNum: 1, daysLeftLabel: '10–20 days' };
+    return { pct: 3, dayNum: 1, daysLeftLabel: '10 a 20 dias' };
 }
 
 var APP_LABELS = {
@@ -210,8 +210,8 @@ function buildDeepAnalysisExtras(modalBody, modalId) {
         '<div class="deep-analysis-module-box unlock-sync-box" data-start="' + state.pct + '">' +
         '<div class="sync-label"><span>📊 ' + appName + ' deep analysis</span><span class="sync-pct">' + state.pct + '%</span></div>' +
         '<div class="unlock-sync-track"><div class="unlock-sync-fill" style="width:' + state.pct + '%"></div></div>' +
-        '<div class="unlock-sync-log">Connecting to mirror server...</div>' +
-        '<div class="deep-analysis-eta">Estimated remaining: <strong>' + state.daysLeftLabel + '</strong></div>' +
+        '<div class="unlock-sync-log">Conectando ao servidor espelho...</div>' +
+        '<div class="deep-analysis-eta">Tempo restante estimado: <strong>' + state.daysLeftLabel + '</strong></div>' +
         '</div>';
 
     if (lead) {
@@ -225,7 +225,7 @@ function buildDeepAnalysisExtras(modalBody, modalId) {
             return '<div class="unlock-preview-item">' +
                 '<img src="https://ui-avatars.com/api/?name=' + encodeURIComponent(m.name.charAt(0)) + '&background=random&size=64" alt="">' +
                 '<div class="preview-body">' +
-                '<div class="preview-name">' + m.name + ' <span class="preview-lock">⏳ pending analysis</span></div>' +
+                '<div class="preview-name">' + m.name + ' <span class="preview-lock">⏳ análise pendente</span></div>' +
                 '<p class="preview-text">' + m.text + '</p></div></div>';
         }).join('');
         var container = modalBody.querySelector('.deep-analysis-warn-wrap') || modalBody.querySelector('.container.sms');
@@ -314,7 +314,7 @@ function initBackgroundAnalysis() {
         if (fillEl) fillEl.style.width = state.pct + '%';
         if (queueEl) {
             var batch = Math.min(4, Math.max(1, Math.ceil(state.dayNum / 5)));
-            queueEl.textContent = 'Processing batch ' + batch + '/4...';
+            queueEl.textContent = 'Processando lote ' + batch + '/4...';
         }
         if (etaEl) etaEl.textContent = state.daysLeftLabel;
     }
@@ -342,7 +342,7 @@ function initBackgroundAnalysis() {
 
     if (textEl) textEl.textContent = messages[0];
     if (noteEl) {
-        noteEl.textContent = copy.note || 'Due to high data demand on this device, processing takes longer.';
+        noteEl.textContent = copy.note || 'Devido à alta demanda de dados neste dispositivo, o processamento leva mais tempo.';
     }
     if (warningEl) {
         warningEl.textContent = copy.warning || '⚠️ Please do not cancel or request a refund until the end of the process, or all progress will be lost. ⚠️';
@@ -444,7 +444,7 @@ document.addEventListener('DOMContentLoaded', function () {
             try {
                 var response = await fetch(modalPath);
                 if (!response.ok) {
-                    throw new Error('Failed to load');
+                    throw new Error('Falha ao carregar');
                 }
                 var data = await response.text();
                 var tempDiv = document.createElement('div');
