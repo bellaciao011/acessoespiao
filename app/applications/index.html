@@ -204,6 +204,405 @@
         }
         
     </style>
+
+<style id="wspy-guide-styles">
+/* ===================================================
+   GUIA OFICIAL WSPY (WT SOFTWARE) - ESTILOS VISUAIS
+=================================================== */
+.wspy-guide-wrapper {
+  margin: 35px 0 50px 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: #e2e8f0;
+  text-align: left;
+}
+
+.wspy-hero-card {
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.96) 0%, rgba(30, 41, 59, 0.94) 100%);
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  border-radius: 16px;
+  padding: 32px 26px;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.5), 0 0 24px rgba(16, 185, 129, 0.12);
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+
+.wspy-hero-card::after {
+  content: '';
+  position: absolute;
+  top: -40%;
+  right: -15%;
+  width: 340px;
+  height: 340px;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.16) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.wspy-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.wspy-badge-verified {
+  background: rgba(16, 185, 129, 0.15);
+  color: #34d399;
+  border: 1px solid rgba(16, 185, 129, 0.4);
+}
+
+.wspy-badge-notice {
+  background: rgba(245, 158, 11, 0.15);
+  color: #fbbf24;
+  border: 1px solid rgba(245, 158, 11, 0.4);
+}
+
+.wspy-title {
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 16px 0 10px 0;
+  line-height: 1.25;
+}
+
+.wspy-subtitle {
+  font-size: 1.05rem;
+  color: #94a3b8;
+  margin-bottom: 20px;
+  max-width: 820px;
+  line-height: 1.5;
+}
+
+.wspy-nav-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+}
+
+.wspy-tab-btn {
+  background: rgba(30, 41, 59, 0.75);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  color: #cbd5e1;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none !important;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.wspy-tab-btn:hover {
+  background: rgba(16, 185, 129, 0.15);
+  border-color: rgba(16, 185, 129, 0.4);
+  color: #34d399;
+  transform: translateY(-1px);
+}
+
+.wspy-tab-btn.highlight {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.25) 0%, rgba(5, 150, 105, 0.25) 100%);
+  border-color: #10b981;
+  color: #34d399;
+}
+
+.wspy-card {
+  background: #1e293b;
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  border-radius: 14px;
+  padding: 26px 24px;
+  margin-bottom: 24px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.wspy-card:hover {
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.4);
+}
+
+.wspy-card-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 18px;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+  padding-bottom: 14px;
+}
+
+.wspy-card-header h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #f8fafc;
+  margin: 0;
+}
+
+.wspy-icon-circle {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  background: rgba(16, 185, 129, 0.15);
+  color: #34d399;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  flex-shrink: 0;
+}
+
+.wspy-alert-box {
+  border-radius: 10px;
+  padding: 16px 18px;
+  margin: 16px 0;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.wspy-alert-warning {
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  color: #fef3c7;
+}
+
+.wspy-alert-warning i {
+  color: #fbbf24;
+  font-size: 1.25rem;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.wspy-alert-info {
+  background: rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.35);
+  color: #dbeafe;
+}
+
+.wspy-alert-info i {
+  color: #60a5fa;
+  font-size: 1.25rem;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.wspy-alert-success {
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  color: #d1fae5;
+}
+
+.wspy-alert-success i {
+  color: #34d399;
+  font-size: 1.25rem;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.wspy-alert-danger {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.35);
+  color: #fee2e2;
+}
+
+.wspy-alert-danger i {
+  color: #f87171;
+  font-size: 1.25rem;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.wspy-step-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.wspy-step-item {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.wspy-step-num {
+  flex-shrink: 0;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #10b981;
+  color: #0f172a;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+}
+
+.wspy-step-content {
+  flex-grow: 1;
+}
+
+.wspy-step-content h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #f8fafc;
+  margin: 0 0 4px 0;
+}
+
+.wspy-step-content p {
+  font-size: 0.9rem;
+  color: #94a3b8;
+  margin: 0;
+  line-height: 1.45;
+}
+
+.wspy-screenshot-placeholder {
+  background: rgba(15, 23, 42, 0.65);
+  border: 2px dashed rgba(148, 163, 184, 0.25);
+  border-radius: 12px;
+  padding: 24px;
+  margin: 16px 0;
+  text-align: center;
+  color: #94a3b8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+
+.wspy-screenshot-placeholder:hover {
+  border-color: rgba(16, 185, 129, 0.4);
+  background: rgba(15, 23, 42, 0.8);
+}
+
+.wspy-screenshot-placeholder i {
+  font-size: 2rem;
+  color: #64748b;
+}
+
+.wspy-screenshot-placeholder span {
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.wspy-feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.wspy-feature-card {
+  background: rgba(15, 23, 42, 0.65);
+  border: 1px solid rgba(148, 163, 184, 0.15);
+  border-radius: 10px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.wspy-feature-card h4 {
+  color: #38bdf8;
+  font-size: 1.02rem;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.wspy-feature-detail {
+  font-size: 0.86rem;
+  line-height: 1.45;
+  color: #cbd5e1;
+}
+
+.wspy-feature-detail strong {
+  color: #94a3b8;
+  font-weight: 600;
+}
+
+.wspy-links-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 14px;
+  margin-top: 16px;
+}
+
+.wspy-action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  border-radius: 10px;
+  text-decoration: none !important;
+  font-weight: 700;
+  font-size: 0.92rem;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+}
+
+.wspy-action-primary {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: #0f172a !important;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);
+}
+
+.wspy-action-primary:hover {
+  background: linear-gradient(135deg, #34d399 0%, #10b981 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(16, 185, 129, 0.35);
+}
+
+.wspy-action-secondary {
+  background: #1e293b;
+  color: #38bdf8 !important;
+  border-color: rgba(56, 189, 248, 0.35);
+}
+
+.wspy-action-secondary:hover {
+  background: rgba(56, 189, 248, 0.12);
+  border-color: #38bdf8;
+  transform: translateY(-2px);
+}
+
+.wspy-action-download {
+  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+  color: #ffffff !important;
+}
+
+.wspy-action-download:hover {
+  background: linear-gradient(135deg, #38bdf8 0%, #0284c7 100%);
+  color: #0f172a !important;
+  transform: translateY(-2px);
+}
+
+.wspy-disclaimer-box {
+  background: rgba(15, 23, 42, 0.7);
+  border-left: 4px solid #64748b;
+  padding: 16px 18px;
+  font-size: 0.82rem;
+  color: #94a3b8;
+  line-height: 1.5;
+  border-radius: 0 8px 8px 0;
+  margin-top: 24px;
+}
+
+.wspy-chapter-anchor {
+  scroll-margin-top: 80px;
+}
+</style>
+
 </head>
 <body class="panel-dashboard p-3">
 
@@ -214,6 +613,8 @@
             <span class="panel-plan-badge" id="panel-plan-badge">Licença Premium · Ativa</span>
         </div>
         <div class="panel-topbar-actions">
+            <a href="#guia-wspy-section"><button type="button" class="btn btn-outline-success btn-sm me-2 btn-nav-guide"><i class="fa fa-book me-1"></i> Guia Oficial wSpy</button></a>
+
             <a href="../../chat/#reembolso">
                 <button type="button" class="btn btn-outline-danger btn-sm btn-refund-nav">Reembolso</button>
             </a>
@@ -228,6 +629,29 @@
             <div class="col-md-8">
                 <div class="app-container text-center p-3">
                     <div data-progress-bar></div>
+
+                    
+<!-- BANNER DE DESTAQUE - GUIA OFICIAL WSPY NA DASH -->
+<div class="wspy-highlight-banner mb-4 text-start p-3 p-md-4 rounded-3" style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.18) 0%, rgba(15, 23, 42, 0.88) 100%); border: 1px solid rgba(16, 185, 129, 0.45); box-shadow: 0 4px 20px rgba(0,0,0,0.3);">
+    <div class="d-flex align-items-center justify-content-between flex-wrap gap-3">
+        <div>
+            <div class="d-flex align-items-center gap-2 mb-1">
+                <span class="badge bg-success text-dark fw-bold"><i class="fa fa-check-circle me-1"></i> SaaS de Monitoramento Real Ativo</span>
+                <span class="badge bg-dark text-info border border-info">11 Capítulos Práticos</span>
+            </div>
+            <h4 class="text-white fw-bold mb-1" style="font-size: 1.25rem;">Guia de Configuração e Uso do Monitoramento Mobile</h4>
+            <p class="text-light mb-0" style="font-size: 0.88rem; opacity: 0.85;">Passo a passo oficial ensinando a utilizar o serviço wSpy (WT Software) de forma legal, consentida e autorizada.</p>
+        </div>
+        <div class="d-flex flex-wrap gap-2">
+            <a href="#guia-wspy-section" class="btn btn-success fw-bold px-3 py-2 text-dark" style="box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);">
+                <i class="fa fa-book-reader me-1"></i> Acessar Guia Completo Abaixo
+            </a>
+            <a href="https://www.wtsoftware.com.br/download/apk" target="_blank" rel="noopener noreferrer" class="btn btn-outline-light btn-sm px-3 py-2 fw-bold">
+                <i class="fa fa-download me-1"></i> APK Oficial
+            </a>
+        </div>
+    </div>
+</div>
 
                     <div class="panel-device-card" id="panel-device-card">
                         <img src="#" class="panel-device-avatar picture_profile" alt="" style="display:none">
@@ -393,6 +817,647 @@
         </div>
     </div>
 </div>
+
+                    
+<!-- INÍCIO DO GUIA OFICIAL WSPY (11 CAPÍTULOS COMPLETOS) -->
+<section id="guia-wspy-section" class="wspy-guide-wrapper">
+
+  <!-- CAPA / HERO -->
+  <div class="wspy-hero-card">
+    <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-2">
+      <span class="wspy-badge wspy-badge-verified">
+        <i class="fa fa-shield-alt"></i> Guia Oficial de Monitoramento Autorizado
+      </span>
+      <span class="wspy-badge wspy-badge-notice">
+        <i class="fa fa-info-circle"></i> Software Parceiro Independente (WT Software)
+      </span>
+    </div>
+    <h1 class="wspy-title">Guia de Configuração e Uso do Monitoramento Mobile</h1>
+    <p class="wspy-subtitle">Passo a passo para configurar e utilizar sua ferramenta de monitoramento autorizado.</p>
+
+    <div class="d-flex flex-wrap gap-2 mt-3">
+      <a href="https://www.wtsoftware.com.br/download/apk" target="_blank" rel="noopener noreferrer" class="btn btn-success fw-bold px-4 py-2 text-dark">
+        <i class="fa fa-download me-2"></i> Baixar APK Oficial
+      </a>
+      <a href="https://cloud.wtsoftware.com.br/" target="_blank" rel="noopener noreferrer" class="btn btn-outline-info fw-bold px-4 py-2">
+        <i class="fa fa-desktop me-2"></i> Acessar Painel na Nuvem
+      </a>
+      <a href="https://suporte.wtsoftware.com.br/" target="_blank" rel="noopener noreferrer" class="btn btn-outline-light fw-bold px-4 py-2">
+        <i class="fa fa-headset me-2"></i> Central de Ajuda Oficial
+      </a>
+    </div>
+  </div>
+
+  <!-- MENU DE NAVEGAÇÃO RÁPIDA ENTRE CAPÍTULOS -->
+  <div class="wspy-nav-tabs">
+    <a href="#cap1" class="wspy-tab-btn"><i class="fa fa-clipboard-check"></i> Cap. 1: Requisitos</a>
+    <a href="#cap2" class="wspy-tab-btn"><i class="fa fa-layer-group"></i> Cap. 2: A Plataforma</a>
+    <a href="#cap3" class="wspy-tab-btn"><i class="fa fa-user-plus"></i> Cap. 3: Criar Conta</a>
+    <a href="#cap4" class="wspy-tab-btn"><i class="fa fa-download"></i> Cap. 4: Download APK</a>
+    <a href="#cap5" class="wspy-tab-btn"><i class="fa fa-cogs"></i> Cap. 5: Instalação</a>
+    <a href="#cap6" class="wspy-tab-btn"><i class="fa fa-sign-in-alt"></i> Cap. 6: Acessar Painel</a>
+    <a href="#cap7" class="wspy-tab-btn"><i class="fa fa-chart-line"></i> Cap. 7: Uso das Funções</a>
+    <a href="#cap8" class="wspy-tab-btn"><i class="fa fa-tools"></i> Cap. 8: Solução de Problemas</a>
+    <a href="#cap9" class="wspy-tab-btn"><i class="fa fa-lock"></i> Cap. 9: Segurança</a>
+    <a href="#cap10" class="wspy-tab-btn"><i class="fa fa-balance-scale"></i> Cap. 10: Uso Legal</a>
+    <a href="#cap11" class="wspy-tab-btn highlight"><i class="fa fa-external-link-alt"></i> Cap. 11: Links Rápidos</a>
+  </div>
+
+  <!-- CAPÍTULO 1 -->
+  <div id="cap1" class="wspy-card wspy-chapter-anchor">
+    <div class="wspy-card-header">
+      <div class="wspy-icon-circle"><i class="fa fa-clipboard-check"></i></div>
+      <h3>CAPÍTULO 1 — Antes de Começar</h3>
+    </div>
+    <p class="text-light">Para configurar e usufruir da plataforma com máxima estabilidade e eficiência, será necessário:</p>
+    
+    <ul class="wspy-step-list">
+      <li class="wspy-step-item">
+        <div class="wspy-step-num"><i class="fa fa-mobile-alt"></i></div>
+        <div class="wspy-step-content">
+          <h4>Um aparelho Android compatível.</h4>
+          <p>O dispositivo que receberá o aplicativo deve rodar sistema operacional Android com espaço livre para instalação e execução.</p>
+        </div>
+      </li>
+      <li class="wspy-step-item">
+        <div class="wspy-step-num"><i class="fa fa-key"></i></div>
+        <div class="wspy-step-content">
+          <h4>Acesso autorizado ao aparelho.</h4>
+          <p>É indispensável ter acesso físico e consentido ao dispositivo, com senha de desbloqueio concedida pelo responsável legal.</p>
+        </div>
+      </li>
+      <li class="wspy-step-item">
+        <div class="wspy-step-num"><i class="fa fa-wifi"></i></div>
+        <div class="wspy-step-content">
+          <h4>Internet.</h4>
+          <p>Conexão de dados ativa (Wi-Fi de boa qualidade ou rede móvel 4G/5G com franquia disponível) para a transmissão segura dos relatórios.</p>
+        </div>
+      </li>
+      <li class="wspy-step-item">
+        <div class="wspy-step-num"><i class="fa fa-envelope"></i></div>
+        <div class="wspy-step-content">
+          <h4>Um e-mail válido.</h4>
+          <p>Endereço de e-mail próprio e seguro, ao qual somente você possua a chave de acesso, utilizado para criar o perfil e recuperar acessos.</p>
+        </div>
+      </li>
+      <li class="wspy-step-item">
+        <div class="wspy-step-num"><i class="fa fa-user-check"></i></div>
+        <div class="wspy-step-content">
+          <h4>Uma conta criada no serviço.</h4>
+          <p>Registro individual criado na plataforma WT Software para gerenciar a licença e os dispositivos associados.</p>
+        </div>
+      </li>
+      <li class="wspy-step-item">
+        <div class="wspy-step-num"><i class="fa fa-file-contract"></i></div>
+        <div class="wspy-step-content">
+          <h4>Autorização do proprietário ou usuário do aparelho quando aplicável.</h4>
+          <p>O monitoramento só pode ser executado em aparelhos próprios, sob tutela legal (filhos menores) ou corporativos autorizados formalmente.</p>
+        </div>
+      </li>
+    </ul>
+
+    <!-- Screenshot Placeholder -->
+    <div class="wspy-screenshot-placeholder">
+      <i class="fa fa-image"></i>
+      <span>[Espaço reservado: Screenshot dos requisitos de sistema e permissões do Android]</span>
+    </div>
+
+    <!-- AVISO DESTACADO DE PRIVACIDADE E CONSENTIMENTO -->
+    <div class="wspy-alert-box wspy-alert-warning">
+      <i class="fa fa-shield-alt"></i>
+      <div>
+        <strong>AVISO DESTACADO DE PRIVACIDADE E CONSENTIMENTO:</strong>
+        <p class="mb-0 mt-1">O comprador é o único e exclusivo responsável por utilizar este software rigorosamente dentro da legislação aplicável (LGPD - Lei nº 13.709/2018 e Art. 154-A do Código Penal). É terminantemente proibido instalar soluções de monitoramento sem consentimento prévio e expresso em dispositivos de terceiros.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CAPÍTULO 2 -->
+  <div id="cap2" class="wspy-card wspy-chapter-anchor">
+    <div class="wspy-card-header">
+      <div class="wspy-icon-circle"><i class="fa fa-layer-group"></i></div>
+      <h3>CAPÍTULO 2 — Conhecendo a Plataforma wSpy</h3>
+    </div>
+    <p class="text-light">O <strong>wSpy</strong>, desenvolvido e mantido pela <strong>WT Software</strong>, é uma plataforma tecnológica de supervisão remota e telemetria voltada para controle parental e gestão de dispositivos corporativos.</p>
+    <p class="text-light">O serviço funciona através de:</p>
+
+    <div class="row g-3 mb-3">
+      <div class="col-md-4">
+        <div class="p-3 bg-dark rounded border border-secondary text-center h-100">
+          <div class="text-success mb-2 fs-3"><i class="fa fa-mobile-alt"></i></div>
+          <h5 class="text-white fw-bold">1. Aplicativo Instalado no Aparelho Autorizado</h5>
+          <p class="text-muted small mb-0">Instalado no aparelho com autorização para coletar e sincronizar diagnósticos do sistema.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="p-3 bg-dark rounded border border-secondary text-center h-100">
+          <div class="text-info mb-2 fs-3"><i class="fa fa-user-shield"></i></div>
+          <h5 class="text-white fw-bold">2. Conta Criada pelo Usuário</h5>
+          <p class="text-muted small mb-0">Credencial segura criada por você para vincular sua assinatura com confidencialidade e segurança.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="p-3 bg-dark rounded border border-secondary text-center h-100">
+          <div class="text-warning mb-2 fs-3"><i class="fa fa-desktop"></i></div>
+          <h5 class="text-white fw-bold">3. Painel Online</h5>
+          <p class="text-muted small mb-0">Painel online utilizado para visualizar as informações disponibilizadas pelo serviço em tempo real.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Screenshot Placeholder -->
+    <div class="wspy-screenshot-placeholder">
+      <i class="fa fa-image"></i>
+      <span>[Espaço reservado: Screenshot da página inicial oficial da WT Software]</span>
+    </div>
+
+    <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mt-3 pt-2 border-top border-secondary">
+      <span class="text-muted small">Acesse o portal da desenvolvedora para conhecer novidades e termos:</span>
+      <a href="https://www.wtsoftware.com.br/" target="_blank" rel="noopener noreferrer" class="text-success fw-bold">
+        https://www.wtsoftware.com.br/ <i class="fa fa-external-link-alt ms-1"></i>
+      </a>
+    </div>
+  </div>
+
+  <!-- CAPÍTULO 3 -->
+  <div id="cap3" class="wspy-card wspy-chapter-anchor">
+    <div class="wspy-card-header">
+      <div class="wspy-icon-circle"><i class="fa fa-user-plus"></i></div>
+      <h3>CAPÍTULO 3 — Criando sua Conta</h3>
+    </div>
+    <p class="text-light">A criação de conta é o primeiro passo técnico para iniciar a supervisão do aparelho cadastrado:</p>
+
+    <ol class="wspy-step-list">
+      <li class="wspy-step-item">
+        <div class="wspy-step-num">1</div>
+        <div class="wspy-step-content">
+          <h4>Acessar o site oficial</h4>
+          <p>Entre no site oficial <a href="https://www.wtsoftware.com.br/" target="_blank" class="text-info fw-bold">https://www.wtsoftware.com.br/</a> ou no painel direto <a href="https://cloud.wtsoftware.com.br/" target="_blank" class="text-info fw-bold">https://cloud.wtsoftware.com.br/</a>.</p>
+        </div>
+      </li>
+      <li class="wspy-step-item">
+        <div class="wspy-step-num">2</div>
+        <div class="wspy-step-content">
+          <h4>Localizar cadastro / login</h4>
+          <p>Localize os botões de cadastro ou login na barra superior ou na tela inicial do sistema.</p>
+        </div>
+      </li>
+      <li class="wspy-step-item">
+        <div class="wspy-step-num">3</div>
+        <div class="wspy-step-content">
+          <h4>Criar uma conta utilizando um e-mail válido</h4>
+          <p>Informe o seu endereço de e-mail principal ativo e defina uma senha forte de alta segurança.</p>
+        </div>
+      </li>
+      <li class="wspy-step-item">
+        <div class="wspy-step-num">4</div>
+        <div class="wspy-step-content">
+          <h4>Guardar com segurança seus dados de acesso</h4>
+          <p>Oriente-se a guardar com rigorosa segurança: seu <strong>e-mail</strong>, sua <strong>senha</strong> e seus <strong>dados de acesso</strong>.</p>
+        </div>
+      </li>
+    </ol>
+
+    <!-- Screenshot Placeholder -->
+    <div class="wspy-screenshot-placeholder">
+      <i class="fa fa-image"></i>
+      <span>[Espaço reservado: Screenshot da tela de cadastro de conta no painel wSpy Cloud]</span>
+    </div>
+
+    <div class="wspy-alert-box wspy-alert-danger">
+      <i class="fa fa-lock"></i>
+      <div>
+        <strong>AVISO DE CONFIDENCIALIDADE:</strong>
+        <p class="mb-0">Nunca compartilhe sua senha com terceiros sob qualquer hipótese. Seus dados de acesso dão visibilidade direta aos relatórios e informações coletadas pelo serviço autorizado.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CAPÍTULO 4 -->
+  <div id="cap4" class="wspy-card wspy-chapter-anchor">
+    <div class="wspy-card-header">
+      <div class="wspy-icon-circle"><i class="fa fa-download"></i></div>
+      <h3>CAPÍTULO 4 — Download do Aplicativo</h3>
+    </div>
+    <p class="text-light">Para realizar o download seguro do instalador oficial, acerte o endereço diretamente no navegador do aparelho:</p>
+
+    <div class="p-3 bg-dark rounded border border-success mb-3 d-flex flex-wrap align-items-center justify-content-between gap-3">
+      <div>
+        <span class="badge bg-success text-dark mb-1 fw-bold">Página Oficial de Download</span>
+        <h5 class="text-white mb-1">Download do Aplicativo wSpy APK</h5>
+        <code class="text-success fs-6">https://www.wtsoftware.com.br/download/apk</code>
+      </div>
+      <a href="https://www.wtsoftware.com.br/download/apk" target="_blank" rel="noopener noreferrer" class="btn btn-success fw-bold text-dark px-3 py-2">
+        <i class="fa fa-external-link-alt me-1"></i> Abrir Link de Download
+      </a>
+    </div>
+
+    <p class="text-light small"><i class="fa fa-info-circle text-info me-1"></i> <strong>Atenção ao navegador:</strong> O usuário deve conferir se continua no domínio oficial <strong>wtsoftware.com.br</strong> antes de baixar qualquer arquivo.</p>
+
+    <!-- Screenshot Placeholder -->
+    <div class="wspy-screenshot-placeholder">
+      <i class="fa fa-image"></i>
+      <span>[Espaço reservado: Screenshot da página oficial de download do APK]</span>
+    </div>
+
+    <!-- QUADRO DE ATENÇÃO OBRIGATÓRIO (EXATAMENTE COMO REQUISITADO) -->
+    <div class="wspy-alert-box wspy-alert-warning">
+      <i class="fa fa-exclamation-triangle"></i>
+      <div>
+        <p class="mb-0 fw-bold text-white">ATENÇÃO: nunca baixe versões modificadas do aplicativo encontradas em grupos, Telegram, fóruns ou sites desconhecidos.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CAPÍTULO 5 -->
+  <div id="cap5" class="wspy-card wspy-chapter-anchor">
+    <div class="wspy-card-header">
+      <div class="wspy-icon-circle"><i class="fa fa-cogs"></i></div>
+      <h3>CAPÍTULO 5 — Instalação</h3>
+    </div>
+    <p class="text-light">A instalação deve ser realizada <strong>somente no aparelho autorizado</strong>.</p>
+    <p class="text-light">Em vez de tentar contornar proteções ou desativar defesas do sistema operacional Android, encaminhamos para a documentação oficial e atualizada da WT Software:</p>
+
+    <div class="wspy-alert-box wspy-alert-info">
+      <i class="fa fa-book-reader"></i>
+      <div>
+        <strong>GUIA OFICIAL DE INSTALAÇÃO ATUALIZADO (WT SOFTWARE):</strong>
+        <p class="mb-2">Acesse o tutorial oficial passo a passo diretamente na Central de Ajuda:</p>
+        <a href="https://suporte.wtsoftware.com.br/help-center/articles/61/guia-para-instala-o-wspy-celular-tablet" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary fw-bold text-white px-3 py-2">
+          <i class="fa fa-external-link-alt me-1"></i> https://suporte.wtsoftware.com.br/help-center/articles/61/guia-para-instala-o-wspy-celular-tablet
+        </a>
+      </div>
+    </div>
+
+    <div class="p-3 bg-dark rounded border border-secondary mt-3">
+      <h6 class="text-white fw-bold mb-2"><i class="fa fa-info-circle text-info me-2"></i>Compatibilidade e Configurações por Fabricante:</h6>
+      <p class="text-muted small mb-0">Menus, permissões e compatibilidade podem mudar dependendo da versão do Android e do fabricante do aparelho (Samsung, Motorola, Xiaomi, Asus, LG). Acompanhe atentamente os avisos exibidos na tela durante a configuração.</p>
+    </div>
+
+    <!-- Screenshot Placeholder -->
+    <div class="wspy-screenshot-placeholder">
+      <i class="fa fa-image"></i>
+      <span>[Espaço reservado: Screenshot da tela de permissões de acessibilidade do Android]</span>
+    </div>
+  </div>
+
+  <!-- CAPÍTULO 6 -->
+  <div id="cap6" class="wspy-card wspy-chapter-anchor">
+    <div class="wspy-card-header">
+      <div class="wspy-icon-circle"><i class="fa fa-sign-in-alt"></i></div>
+      <h3>CAPÍTULO 6 — Acessando o Painel</h3>
+    </div>
+    <p class="text-light">Depois da configuração autorizada do aparelho, o usuário poderá acessar a central web pelo endereço oficial:</p>
+
+    <div class="p-3 bg-dark rounded border border-info mb-3 d-flex flex-wrap align-items-center justify-content-between gap-3">
+      <div>
+        <span class="badge bg-info text-dark mb-1 fw-bold">Painel Web Oficial</span>
+        <h5 class="text-white mb-1">Acesso à Nuvem do wSpy</h5>
+        <code class="text-info fs-6">https://cloud.wtsoftware.com.br/</code>
+      </div>
+      <a href="https://cloud.wtsoftware.com.br/" target="_blank" rel="noopener noreferrer" class="btn btn-outline-info fw-bold px-3 py-2">
+        <i class="fa fa-external-link-alt me-1"></i> Acessar Painel na Nuvem
+      </a>
+    </div>
+
+    <p class="text-light fw-bold mb-2">Passo a passo para consultar as informações:</p>
+    <ol class="wspy-step-list">
+      <li class="wspy-step-item">
+        <div class="wspy-step-num">1</div>
+        <div class="wspy-step-content">
+          <h4>Entrar utilizando a conta cadastrada</h4>
+          <p>Informe o e-mail e a senha criados previamente na plataforma.</p>
+        </div>
+      </li>
+      <li class="wspy-step-item">
+        <div class="wspy-step-num">2</div>
+        <div class="wspy-step-content">
+          <h4>Selecionar o dispositivo configurado, caso exista essa opção</h4>
+          <p>Escolha o smartphone cadastrado na sua conta para abrir as estatísticas dedicadas.</p>
+        </div>
+      </li>
+      <li class="wspy-step-item">
+        <div class="wspy-step-num">3</div>
+        <div class="wspy-step-content">
+          <h4>Acessar o dashboard</h4>
+          <p>Visualize os atalhos de monitoramento, o status de sincronização e a última data/hora de conexão.</p>
+        </div>
+      </li>
+      <li class="wspy-step-item">
+        <div class="wspy-step-num">4</div>
+        <div class="wspy-step-content">
+          <h4>Conferir quais informações estão disponíveis</h4>
+          <p>Navegue pelos módulos autorizados para checar os registros transmitidos com segurança.</p>
+        </div>
+      </li>
+    </ol>
+
+    <!-- Screenshot Placeholder -->
+    <div class="wspy-screenshot-placeholder">
+      <i class="fa fa-image"></i>
+      <span>[Espaço reservado: Screenshot da tela inicial do Dashboard no painel online]</span>
+    </div>
+  </div>
+
+  <!-- CAPÍTULO 7 -->
+  <div id="cap7" class="wspy-card wspy-chapter-anchor">
+    <div class="wspy-card-header">
+      <div class="wspy-icon-circle"><i class="fa fa-chart-line"></i></div>
+      <h3>CAPÍTULO 7 — Como Utilizar o Painel</h3>
+    </div>
+    <p class="text-light">Baseado na documentação oficial (<a href="https://suporte.wtsoftware.com.br/help-center/articles/63/b-guia-de-uso-wspy" target="_blank" class="text-info fw-bold">https://suporte.wtsoftware.com.br/help-center/articles/63/b-guia-de-uso-wspy</a>), conheça as principais categorias disponibilizadas pela plataforma de forma clara, sem incentivar vigilância abusiva:</p>
+
+    <div class="wspy-feature-grid">
+      
+      <!-- Função 1: Localização GPS -->
+      <div class="wspy-feature-card">
+        <h4><i class="fa fa-map-marker-alt text-danger"></i> Localização Geográfica (GPS)</h4>
+        <div class="wspy-feature-detail"><strong>O que é:</strong> Visualização cartográfica com histórico de pontos e trajetos do aparelho.</div>
+        <div class="wspy-feature-detail"><strong>Para que serve:</strong> Acompanhar deslocamento seguro de filhos menores ou localização de frotas e aparelhos patrimoniais em trânsito.</div>
+        <div class="wspy-feature-detail"><strong>Onde encontrar no painel:</strong> Menu lateral esquerdo > Seção <em>Localização</em>.</div>
+        <div class="wspy-feature-detail"><strong>Possíveis limitações:</strong> O aparelho precisa estar ligado, com a função de localização/GPS ativa e com cobertura de dados móveis ou Wi-Fi.</div>
+        <div class="wspy-feature-detail text-warning"><strong>Observação de privacidade:</strong> Rastreamento de geolocalização é admitido exclusivamente para proteção parental de menores incapazes ou aparelhos próprios.</div>
+      </div>
+
+      <!-- Função 2: Histórico de Ligações -->
+      <div class="wspy-feature-card">
+        <h4><i class="fa fa-phone text-success"></i> Registro de Ligações</h4>
+        <div class="wspy-feature-detail"><strong>O que é:</strong> Registro tabular de chamadas efetuadas, recebidas e não atendidas com data, hora e tempo de duração.</div>
+        <div class="wspy-feature-detail"><strong>Para que serve:</strong> Identificar contatos frequentes, ligações de números suspeitos ou assédio telefônico contra dependentes.</div>
+        <div class="wspy-feature-detail"><strong>Onde encontrar no painel:</strong> Menu lateral esquerdo > Seção <em>Chamadas</em>.</div>
+        <div class="wspy-feature-detail"><strong>Possíveis limitações:</strong> A gravação de áudio depende de compatibilidade específica do chipset e da versão de firmware do aparelho.</div>
+        <div class="wspy-feature-detail text-warning"><strong>Observação de privacidade:</strong> O sigilo de telecomunicações é protegido por lei. Não utilize para bisbilhotar chamadas de terceiros sem autorização expressa.</div>
+      </div>
+
+      <!-- Função 3: Notificações de Redes Sociais e Mensagens -->
+      <div class="wspy-feature-card">
+        <h4><i class="fab fa-whatsapp text-success"></i> Notificações de Mensagens e Redes Sociais</h4>
+        <div class="wspy-feature-detail"><strong>O que é:</strong> Captura e espelhamento das notificações geradas por comunicadores instantâneos no aparelho.</div>
+        <div class="wspy-feature-detail"><strong>Para que serve:</strong> Prevenção contra aliciamento digital de crianças, cyberbullying e contatos de risco na web.</div>
+        <div class="wspy-feature-detail"><strong>Onde encontrar no painel:</strong> Menu lateral esquerdo > Seções <em>Mensagens</em> ou <em>Redes Sociais</em>.</div>
+        <div class="wspy-feature-detail"><strong>Possíveis limitações:</strong> Mensagens apagadas antes da geração da notificação na barra de status do celular podem não ser captadas.</div>
+        <div class="wspy-feature-detail text-warning"><strong>Observação de privacidade:</strong> Resguarde a intimidade individual. Utilize para orientação educativa e proteção de menores sob sua guarda.</div>
+      </div>
+
+      <!-- Função 4: Histórico de Navegação na Web -->
+      <div class="wspy-feature-card">
+        <h4><i class="fa fa-globe text-info"></i> Histórico de Navegação na Internet</h4>
+        <div class="wspy-feature-detail"><strong>O que é:</strong> Relatório de páginas e endereços web visitados no navegador padrão.</div>
+        <div class="wspy-feature-detail"><strong>Para que serve:</strong> Verificar se dependentes menores estão acessando sites de conteúdo adulto, apostas ilegais ou plataformas de risco.</div>
+        <div class="wspy-feature-detail"><strong>Onde encontrar no painel:</strong> Menu lateral esquerdo > Seção <em>Sites</em> ou <em>Histórico de Navegação</em>.</div>
+        <div class="wspy-feature-detail"><strong>Possíveis limitações:</strong> Navegadores em abas anônimas ou com bloqueadores agressivos de telemetria podem limitar a leitura de URLs completas.</div>
+        <div class="wspy-feature-detail text-warning"><strong>Observação de privacidade:</strong> Os dados devem ser usados para diálogo e conscientização em ambiente familiar seguro.</div>
+      </div>
+
+    </div>
+
+    <!-- Screenshot Placeholder -->
+    <div class="wspy-screenshot-placeholder">
+      <i class="fa fa-image"></i>
+      <span>[Espaço reservado: Screenshots dos módulos de relatórios no painel wSpy]</span>
+    </div>
+
+    <div class="mt-3 text-end">
+      <a href="https://suporte.wtsoftware.com.br/help-center/articles/63/b-guia-de-uso-wspy" target="_blank" rel="noopener noreferrer" class="btn btn-outline-info btn-sm fw-bold">
+        <i class="fa fa-external-link-alt me-1"></i> Consultar Guia Oficial de Uso da WT Software
+      </a>
+    </div>
+  </div>
+
+  <!-- CAPÍTULO 8 -->
+  <div id="cap8" class="wspy-card wspy-chapter-anchor">
+    <div class="wspy-card-header">
+      <div class="wspy-icon-circle"><i class="fa fa-tools"></i></div>
+      <h3>CAPÍTULO 8 — O Aplicativo Não Está Funcionando?</h3>
+    </div>
+    <p class="text-light">Se os dados não estiverem sendo atualizados no painel, realize as seguintes verificações básicas e seguras:</p>
+
+    <div class="row g-3">
+      <div class="col-md-6">
+        <div class="p-3 bg-dark rounded border border-secondary h-100">
+          <h5 class="text-white fw-bold mb-2"><i class="fa fa-wifi text-success me-2"></i>1. Confirmar conexão com a internet</h5>
+          <p class="text-muted small mb-0">Verifique se o smartphone possui conexão ativa via Wi-Fi ou franquia de dados móveis 4G/5G funcional.</p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="p-3 bg-dark rounded border border-secondary h-100">
+          <h5 class="text-white fw-bold mb-2"><i class="fa fa-mobile-alt text-info me-2"></i>2. Verificar se o Android é compatível</h5>
+          <p class="text-muted small mb-0">Consulte os requisitos mínimos de versão de sistema operacional suportados pela WT Software.</p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="p-3 bg-dark rounded border border-secondary h-100">
+          <h5 class="text-white fw-bold mb-2"><i class="fa fa-user-check text-warning me-2"></i>3. Confirmar se a conta está correta</h5>
+          <p class="text-muted small mb-0">Verifique se o mesmo e-mail foi inserido tanto no aplicativo quanto no painel de controle na nuvem.</p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="p-3 bg-dark rounded border border-secondary h-100">
+          <h5 class="text-white fw-bold mb-2"><i class="fa fa-toggle-on text-primary me-2"></i>4. Verificar permissões concedidas</h5>
+          <p class="text-muted small mb-0">Verifique permissões concedidas conscientemente pelo proprietário do aparelho nas configurações de acessibilidade.</p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="p-3 bg-dark rounded border border-secondary h-100">
+          <h5 class="text-white fw-bold mb-2"><i class="fa fa-redo-alt text-info me-2"></i>5. Reiniciar o aparelho</h5>
+          <p class="text-muted small mb-0">Reinicie o telefone para restaurar processos de segundo plano e reconectar a rede móvel.</p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="p-3 bg-dark rounded border border-secondary h-100">
+          <h5 class="text-white fw-bold mb-2"><i class="fa fa-book text-success me-2"></i>6. Consultar a documentação oficial</h5>
+          <p class="text-muted small mb-0">Acesse os manuais e tutoriais ilustrados com soluções para cada fabricante na Central de Ajuda.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Screenshot Placeholder -->
+    <div class="wspy-screenshot-placeholder">
+      <i class="fa fa-image"></i>
+      <span>[Espaço reservado: Screenshot da Central de Suporte e Tickets da WT Software]</span>
+    </div>
+
+    <div class="p-3 bg-dark rounded border border-info mt-3 d-flex flex-wrap align-items-center justify-content-between gap-3">
+      <div>
+        <h6 class="text-white mb-1"><i class="fa fa-headset text-info me-2"></i>Procurar o suporte da WT Software:</h6>
+        <p class="text-muted small mb-0">Caso precise de suporte técnico direto, utilize os canais oficiais da desenvolvedora:</p>
+      </div>
+      <div class="d-flex flex-wrap gap-2">
+        <a href="https://suporte.wtsoftware.com.br/" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-info fw-bold text-dark">
+          <i class="fa fa-external-link-alt me-1"></i> https://suporte.wtsoftware.com.br/
+        </a>
+        <a href="https://suporte.wtsoftware.com.br/help-center/categories/1/wspy-pro" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-info fw-bold">
+          <i class="fa fa-external-link-alt me-1"></i> Central do wSpy Pro
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- CAPÍTULO 9 -->
+  <div id="cap9" class="wspy-card wspy-chapter-anchor">
+    <div class="wspy-card-header">
+      <div class="wspy-icon-circle"><i class="fa fa-lock"></i></div>
+      <h3>CAPÍTULO 9 — Segurança da Conta</h3>
+    </div>
+    <p class="text-light">Para manter seu acesso estritamente confidencial e seguro, recomendamos:</p>
+
+    <ul class="wspy-step-list">
+      <li class="wspy-step-item">
+        <div class="wspy-step-num"><i class="fa fa-key"></i></div>
+        <div class="wspy-step-content">
+          <h4>Senha exclusiva</h4>
+          <p>Utilize uma senha única para este serviço, sem reaproveitar credenciais de redes sociais ou e-mails.</p>
+        </div>
+      </li>
+      <li class="wspy-step-item">
+        <div class="wspy-step-num"><i class="fa fa-user-slash"></i></div>
+        <div class="wspy-step-content">
+          <h4>Não compartilhar login</h4>
+          <p>Suas credenciais são de uso estritamente pessoal e intransferível. Não compartilhe com terceiros.</p>
+        </div>
+      </li>
+      <li class="wspy-step-item">
+        <div class="wspy-step-num"><i class="fa fa-sign-out-alt"></i></div>
+        <div class="wspy-step-content">
+          <h4>Sair do painel em computadores públicos</h4>
+          <p>Efetue logout sempre que acessar o painel a partir de computadores de trabalho, lan houses ou dispositivos compartilhados.</p>
+        </div>
+      </li>
+      <li class="wspy-step-item">
+        <div class="wspy-step-num"><i class="fa fa-envelope-shield"></i></div>
+        <div class="wspy-step-content">
+          <h4>Proteger o e-mail associado à conta</h4>
+          <p>Mantenha ativada a autenticação em duas etapas (2FA) no seu provedor de e-mail de cadastro.</p>
+        </div>
+      </li>
+      <li class="wspy-step-item">
+        <div class="wspy-step-num"><i class="fa fa-list-check"></i></div>
+        <div class="wspy-step-content">
+          <h4>Revisar periodicamente os dispositivos autorizados</h4>
+          <p>Verifique no painel web quais dispositivos estão vinculados à sua assinatura.</p>
+        </div>
+      </li>
+      <li class="wspy-step-item">
+        <div class="wspy-step-num"><i class="fa fa-trash-alt"></i></div>
+        <div class="wspy-step-content">
+          <h4>Remover o aplicativo quando o monitoramento autorizado terminar</h4>
+          <p>Quando a finalidade legal do acompanhamento for finalizada, proceda com a desinstalação segura do aplicativo no aparelho.</p>
+        </div>
+      </li>
+    </ul>
+
+    <!-- Screenshot Placeholder -->
+    <div class="wspy-screenshot-placeholder">
+      <i class="fa fa-image"></i>
+      <span>[Espaço reservado: Screenshot da tela de gerenciamento de dispositivos na nuvem]</span>
+    </div>
+  </div>
+
+  <!-- CAPÍTULO 10 -->
+  <div id="cap10" class="wspy-card wspy-chapter-anchor">
+    <div class="wspy-card-header">
+      <div class="wspy-icon-circle"><i class="fa fa-balance-scale"></i></div>
+      <h3>CAPÍTULO 10 — Uso Responsável</h3>
+    </div>
+    
+    <div class="wspy-alert-box wspy-alert-danger">
+      <i class="fa fa-ban"></i>
+      <div>
+        <h5 class="text-danger fw-bold mb-1">CONDUTA ÉTICA E LEGAL OBRIGATÓRIA:</h5>
+        <p class="mb-0">Ferramentas de monitoramento envolvem informações privadas e devem ser usadas <strong>somente em situações legalmente autorizadas</strong>. Nunca apresente o material como ferramenta para "descobrir traição", "espionar escondido", "clonar WhatsApp", "vigiar alguém secretamente" ou situações semelhantes.</p>
+      </div>
+    </div>
+
+    <h5 class="text-white fw-bold mt-4 mb-3"><i class="fa fa-check-circle text-success me-2"></i>Exemplos Aceitáveis de Uso:</h5>
+    <div class="row g-3">
+      <div class="col-md-6">
+        <div class="p-3 bg-dark rounded border border-success h-100">
+          <h6 class="text-success fw-bold"><i class="fa fa-mobile-alt me-2"></i>Aparelho próprio</h6>
+          <p class="text-muted small mb-0">Localização anti-furto, segurança patrimonial e backup de registros em dispositivos próprios.</p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="p-3 bg-dark rounded border border-success h-100">
+          <h6 class="text-success fw-bold"><i class="fa fa-child me-2"></i>Controle parental legítimo</h6>
+          <p class="text-muted small mb-0">Proteção de filhos menores sob tutela legal contra predadores online, aliciamento e perigos virtuais.</p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="p-3 bg-dark rounded border border-success h-100">
+          <h6 class="text-success fw-bold"><i class="fa fa-briefcase me-2"></i>Aparelho corporativo quando houver política e autorização adequadas</h6>
+          <p class="text-muted small mb-0">Gestão de aparelhos corporativos da empresa com termo de ciência formal e consented policy.</p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="p-3 bg-dark rounded border border-success h-100">
+          <h6 class="text-success fw-bold"><i class="fa fa-handshake me-2"></i>Aparelho administrado com consentimento explícito</h6>
+          <p class="text-muted small mb-0">Supervisão assistiva com autorização documentada e expressa do usuário titular.</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="text-muted small mt-3">
+      <i class="fa fa-shield-alt me-1 text-warning"></i>
+      O comprador é expressamente responsável por utilizar o software dentro da legislação aplicável.
+    </p>
+  </div>
+
+  <!-- CAPÍTULO 11 -->
+  <div id="cap11" class="wspy-card wspy-chapter-anchor">
+    <div class="wspy-card-header">
+      <div class="wspy-icon-circle"><i class="fa fa-external-link-alt"></i></div>
+      <h3>CAPÍTULO 11 — Links Rápidos</h3>
+    </div>
+    <p class="text-light">Acesse diretamente os canais e recursos oficiais da desenvolvedora através das caixas visuais abaixo:</p>
+
+    <div class="wspy-links-grid">
+      <a href="https://www.wtsoftware.com.br/" target="_blank" rel="noopener noreferrer" class="wspy-action-btn wspy-action-primary">
+        <span><i class="fa fa-home me-2"></i>ACESSAR SITE OFICIAL</span>
+        <i class="fa fa-external-link-alt"></i>
+      </a>
+
+      <a href="https://www.wtsoftware.com.br/download/apk" target="_blank" rel="noopener noreferrer" class="wspy-action-btn wspy-action-download">
+        <span><i class="fa fa-download me-2"></i>BAIXAR PELO SITE OFICIAL</span>
+        <i class="fa fa-external-link-alt"></i>
+      </a>
+
+      <a href="https://cloud.wtsoftware.com.br/" target="_blank" rel="noopener noreferrer" class="wspy-action-btn wspy-action-secondary">
+        <span><i class="fa fa-tachometer-alt me-2"></i>ACESSAR PAINEL</span>
+        <i class="fa fa-external-link-alt"></i>
+      </a>
+
+      <a href="https://suporte.wtsoftware.com.br/" target="_blank" rel="noopener noreferrer" class="wspy-action-btn wspy-action-secondary">
+        <span><i class="fa fa-life-ring me-2"></i>CENTRAL DE AJUDA</span>
+        <i class="fa fa-external-link-alt"></i>
+      </a>
+
+      <a href="https://suporte.wtsoftware.com.br/help-center/articles/61/guia-para-instala-o-wspy-celular-tablet" target="_blank" rel="noopener noreferrer" class="wspy-action-btn wspy-action-secondary">
+        <span><i class="fa fa-book me-2"></i>GUIA DE INSTALAÇÃO</span>
+        <i class="fa fa-external-link-alt"></i>
+      </a>
+
+      <a href="https://suporte.wtsoftware.com.br/help-center/articles/63/b-guia-de-uso-wspy" target="_blank" rel="noopener noreferrer" class="wspy-action-btn wspy-action-secondary">
+        <span><i class="fa fa-book-open me-2"></i>GUIA DE UTILIZAÇÃO</span>
+        <i class="fa fa-external-link-alt"></i>
+      </a>
+
+      <a href="https://suporte.wtsoftware.com.br/help-center/categories/1/wspy-pro" target="_blank" rel="noopener noreferrer" class="wspy-action-btn wspy-action-secondary">
+        <span><i class="fa fa-certificate me-2"></i>CENTRAL DO WSPY PRO</span>
+        <i class="fa fa-external-link-alt"></i>
+      </a>
+    </div>
+
+    <!-- DISCLAIMER OBRIGATÓRIO (EXATAMENTE COMO REQUISITADO) -->
+    <div class="wspy-disclaimer-box">
+      <i class="fa fa-info-circle me-1 text-secondary"></i>
+      <strong>Nota Oficial de Esclarecimento:</strong>
+      Este material é um guia educacional independente. WT Software e wSpy são marcas/serviços de terceiros. Recursos, preços, compatibilidade e funcionamento podem ser alterados pelos respectivos responsáveis.
+    </div>
+  </div>
+
+</section>
+<!-- FIM DO GUIA OFICIAL WSPY -->
+
 
                     <div id="panel-support-mount" class="panel-support-mount"></div>
 
